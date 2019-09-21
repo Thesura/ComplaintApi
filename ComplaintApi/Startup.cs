@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ComplaintApi.Entities;
+using ComplaintApi.Models;
+using ComplaintApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -35,7 +39,14 @@ namespace ComplaintApi
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             var connectionString = Configuration["connectionStrings:ApiDbConnectionString"];
+            services.AddDbContext<ComplaintContext>(o => o.UseSqlServer(connectionString));
 
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<CompanyMaster, CompanyMasterDto>();
+            });
+
+            services.AddScoped<IComplaintRepository, ComplaintRepository>();
 
             services.AddSwaggerGen(c =>
             {

@@ -12,6 +12,7 @@ namespace ComplaintApi.Entities
         [MaxLength(100)]
         public string COMPCODE { get; set; }
 
+        [Key]
         [Required]
         [MaxLength(100)]
         public string PriorityID { get; set; }

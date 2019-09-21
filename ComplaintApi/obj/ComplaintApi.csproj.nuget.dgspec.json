@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\TJMS\\source\\repos\\ComplaintApi\\ComplaintApi\\ComplaintApi.csproj": {}
+    "C:\\Users\\TJMS\\Documents\\GitHub\\ComplaintApi\\ComplaintApi\\ComplaintApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\TJMS\\source\\repos\\ComplaintApi\\ComplaintApi\\ComplaintApi.csproj": {
+    "C:\\Users\\TJMS\\Documents\\GitHub\\ComplaintApi\\ComplaintApi\\ComplaintApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TJMS\\source\\repos\\ComplaintApi\\ComplaintApi\\ComplaintApi.csproj",
+        "projectUniqueName": "C:\\Users\\TJMS\\Documents\\GitHub\\ComplaintApi\\ComplaintApi\\ComplaintApi.csproj",
         "projectName": "ComplaintApi",
-        "projectPath": "C:\\Users\\TJMS\\source\\repos\\ComplaintApi\\ComplaintApi\\ComplaintApi.csproj",
+        "projectPath": "C:\\Users\\TJMS\\Documents\\GitHub\\ComplaintApi\\ComplaintApi\\ComplaintApi.csproj",
         "packagesPath": "C:\\Users\\TJMS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TJMS\\source\\repos\\ComplaintApi\\ComplaintApi\\obj\\",
+        "outputPath": "C:\\Users\\TJMS\\Documents\\GitHub\\ComplaintApi\\ComplaintApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

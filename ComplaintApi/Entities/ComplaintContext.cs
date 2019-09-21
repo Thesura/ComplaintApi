@@ -13,20 +13,35 @@ namespace ComplaintApi.Entities
 
         }
 
-        public DbSet<CompanyMaster> CompanyMasters { get; set; }
+        public DbSet<CompanyMaster> CompanyMaster { get; set; }
 
-        public DbSet<ComplainsHistory> ComplainsHistories { get; set; }
+        public DbSet<ComplainsHistory> ComplainsHistory { get; set; }
 
-        public DbSet<ComplainsMaster> ComplainsMasters { get; set; }
+        public DbSet<ComplainsMaster> ComplainsMaster { get; set; }
 
-        public DbSet<ModuleMaster> ModuleMasters { get; set; }
+        public DbSet<ModuleMaster> ModuleMaster { get; set; }
 
-        public DbSet<PriorityMaster> PriorityMasters { get; set; }
+        public DbSet<PriorityMaster> PriorityMaster { get; set; }
 
-        public DbSet<UserCompany> UserCompanies { get; set; }
+        public DbSet<UserCompany> UserCompanie { get; set; }
 
-        public DbSet<UserMaster> UserMasters { get; set; }
+        public DbSet<UserMaster> UserMaster { get; set; }
 
-        public DbSet<UserModule> UserModules { get; set; }
+        public DbSet<UserModule> UserModule { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ComplainsHistory>()
+                .HasKey(o => new { o.HistoryID, o.ComplainID });
+
+            modelBuilder.Entity<ComplainsMaster>()
+                .HasKey(o => new { o.CompanyID, o.ModuleID, o.EmpID, o.PriorityID });
+
+            modelBuilder.Entity<UserCompany>()
+                .HasKey(o => new { o.EmpID, o.CompanyID });
+
+            modelBuilder.Entity<UserModule>()
+                .HasKey(o => new { o.EmpID, o.ModuleID });
+        }
     }
 }

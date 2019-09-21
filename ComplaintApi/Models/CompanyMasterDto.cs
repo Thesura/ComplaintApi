@@ -4,20 +4,22 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ComplaintApi.Entities
+namespace ComplaintApi.Models
 {
-    public class ModuleMaster
+    public class CompanyMasterDto
     {
         [Required]
         [MaxLength(100)]
         public string COMPCODE { get; set; }
 
-        [Key]
         [Required]
-        [MaxLength(50)]
-        public string ModuleID { get; set; }
+        [MaxLength(100)]
+        public string CompanyID { get; set; }
+
+        [MaxLength(150)]
+        public string CompanyName { get; set; }
 
         [MaxLength(50)]
-        public string ModuleName { get; set; }
+        public string Email { get; set; }
     }
 }
