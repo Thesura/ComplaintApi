@@ -23,7 +23,7 @@ namespace ComplaintApi.Entities
 
         public DbSet<PriorityMaster> PriorityMaster { get; set; }
 
-        public DbSet<UserCompany> UserCompanie { get; set; }
+        public DbSet<UserCompany> UserCompany { get; set; }
 
         public DbSet<UserMaster> UserMaster { get; set; }
 

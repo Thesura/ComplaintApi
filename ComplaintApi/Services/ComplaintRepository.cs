@@ -14,44 +14,94 @@ namespace ComplaintApi.Services
         {
             _context = context;
         }
+
+        //methods for get requests
+
         public CompanyMaster GetCompany(string companyId)
         {
             return _context.CompanyMaster.Where(c => c.CompanyID == companyId).FirstOrDefault();
         }
 
-        public ComplainsMaster getComplains(string companyId, string moduleId, string empId, string priorityId)
+        public ComplainsMaster getComplain(string companyId, string moduleId, string empId, string priorityId)
         {
-            throw new NotImplementedException();
+            return _context.ComplainsMaster.Where
+                (cm => cm.CompanyID == companyId && cm.ModuleID == moduleId && cm.EmpID == empId && cm.PriorityID == priorityId)
+                .FirstOrDefault();
         }
 
         public ComplainsHistory getComplainsHistory(string historyId, string complainId)
         {
-            throw new NotImplementedException();
+            return _context.ComplainsHistory.Where(ch => ch.HistoryID == historyId && ch.ComplainID == complainId)
+                .FirstOrDefault();
         }
 
         public ModuleMaster getModule(string moduleId)
         {
-            throw new NotImplementedException();
+            return _context.ModuleMaster.Where(m => m.ModuleID == moduleId).FirstOrDefault();
         }
 
         public PriorityMaster getPriority(string priorityId)
         {
-            throw new NotImplementedException();
+            return _context.PriorityMaster.Where(p => p.PriorityID == priorityId).FirstOrDefault();
         }
 
         public UserMaster getUser(string empId)
         {
-            throw new NotImplementedException();
+            return _context.UserMaster.Where(u => u.EmpID == empId).FirstOrDefault();
         }
 
         public UserCompany getUserCompany(string empId, string companyId)
         {
-            throw new NotImplementedException();
+            return _context.UserCompany.Where(uc => uc.EmpID == empId && uc.CompanyID == companyId).FirstOrDefault();
         }
 
         public UserModule getUserModule(string empId, string moduleId)
         {
-            throw new NotImplementedException();
+            return _context.UserModule.Where(um => um.EmpID == empId && um.ModuleID == moduleId).FirstOrDefault();
+        }
+
+
+        //methods for checking the existence
+
+        public bool companyExists(string companyId)
+        {
+            return _context.CompanyMaster.Any(c => c.CompanyID == companyId);
+        }
+
+        public bool complainExists(string companyId, string moduleId, string empId, string priorityId)
+        {
+            return _context.ComplainsMaster.Any
+                (cm => cm.CompanyID == companyId && cm.ModuleID == moduleId && cm.EmpID == empId && cm.PriorityID == priorityId);
+        }
+
+        public bool complainHistoryExists(string historyId, string complainId)
+        {
+            return _context.ComplainsHistory.Any(ch => ch.HistoryID == historyId && ch.ComplainID == complainId);
+        }
+
+        public bool moduleExists(string moduleId)
+        {
+            return _context.ModuleMaster.Any(m => m.ModuleID == moduleId);
+        }
+
+        public bool priorityExists(string priorityId)
+        {
+            return _context.PriorityMaster.Any(p => p.PriorityID == priorityId);
+        }
+
+        public bool userCompanyExists(string empId, string companyId)
+        {
+            return _context.UserCompany.Any(uc => uc.EmpID == empId && uc.CompanyID == companyId);
+        }
+
+        public bool userExists(string empId)
+        {
+            return _context.UserMaster.Any(u => u.EmpID == empId);
+        }
+
+        public bool userModuleExists(string empId, string moduleId)
+        {
+            return _context.UserModule.Any(um => um.EmpID == empId && um.ModuleID == moduleId);
         }
     }
 }
