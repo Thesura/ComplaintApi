@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace ComplaintApi.Controllers
 {
-    [Route("api/companymasters")]
-    public class CompanyMastersController : Controller
+    [Route("api/companymaster")]
+    public class CompanyMasterController : Controller
     {
         private IComplaintRepository _complaintRepository;
 
-        public CompanyMastersController(IComplaintRepository complaintRepository)
+        public CompanyMasterController(IComplaintRepository complaintRepository)
         {
             _complaintRepository = complaintRepository;
         }

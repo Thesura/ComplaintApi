@@ -44,6 +44,13 @@ namespace ComplaintApi
             AutoMapper.Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<CompanyMaster, CompanyMasterDto>();
+                cfg.CreateMap<ComplainsHistory, ComplainsHistoryDto>();
+                cfg.CreateMap<ComplainsMaster, ComplainsMasterDto>();
+                cfg.CreateMap<ModuleMaster, ModuleMasterDto>();
+                cfg.CreateMap<PriorityMaster, PriorityMasterDto>();
+                cfg.CreateMap<UserCompany, UserCompanyDto>();
+                cfg.CreateMap<UserMaster, UserMasterDto>();
+                cfg.CreateMap<UserModule, UserModuleDto>();
             });
 
             services.AddScoped<IComplaintRepository, ComplaintRepository>();
