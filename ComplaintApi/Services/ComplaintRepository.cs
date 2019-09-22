@@ -14,9 +14,25 @@ namespace ComplaintApi.Services
         {
             _context = context;
         }
+
+        public bool CompanyExist(string CompanyID)
+        {
+            throw new NotImplementedException();
+        }
+
         public CompanyMaster GetCompany(string companyId)
         {
             return _context.CompanyMaster.FirstOrDefault(c => c.CompanyID == companyId);
+        }
+
+        public bool Save()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCompanyMaster(CompanyMaster company)
+        {
+            throw new NotImplementedException();
         }
     }
 }

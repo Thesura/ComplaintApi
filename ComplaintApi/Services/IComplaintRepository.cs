@@ -9,5 +9,11 @@ namespace ComplaintApi.Services
     public interface IComplaintRepository
     {
         CompanyMaster GetCompany(string companyId);
+
+        bool CompanyExist(string CompanyID);
+
+        void UpdateCompanyMaster(CompanyMaster company);
+
+        bool Save();
     }
 }

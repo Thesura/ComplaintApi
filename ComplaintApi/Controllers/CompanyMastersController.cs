@@ -28,5 +28,38 @@ namespace ComplaintApi.Controllers
 
             return Ok(companyToReturn);
         }
+
+        [HttpPut("{companyId}")]
+        public IActionResult UpdateCompanyMaster(String companyId,
+           [FromBody] CompanyMasterForUpdateDto company)
+        {
+            if (company == null)
+            {
+                return BadRequest();
+            }
+
+            /*   if(!_memberData.MemberExists(memberId))
+               {
+                   return NotFound();
+               }
+                 */
+
+            var CompanyMasterForUpdateRepo = _complaintRepository.GetCompany(companyId);
+            if (CompanyMasterForUpdateRepo == null)
+            {
+                return NotFound();
+            }
+
+            //map back to enitiy
+            Mapper.Map(company, CompanyMasterForUpdateRepo);
+
+            _complaintRepository.UpdateCompanyMaster(CompanyMasterForUpdateRepo);
+
+            if (!_complaintRepository.Save())
+            {
+                throw new Exception($"Updating {companyId} company fails on save");
+            }
+            return NoContent();
+        }
     }
 }
