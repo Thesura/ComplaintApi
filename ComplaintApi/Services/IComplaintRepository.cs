@@ -8,6 +8,7 @@ namespace ComplaintApi.Services
 {
     public interface IComplaintRepository
     {
+        //companyMaster Repo
         CompanyMaster GetCompany(string companyId);
 
         bool CompanyExist(string CompanyID);
@@ -17,6 +18,7 @@ namespace ComplaintApi.Services
         bool Save();
         //modulemaster Repo
 
+        
         ComplainsHistory GetComplainsHistory(string HistoryId);
 
         bool HistoryExist(string HistoryID);
@@ -27,6 +29,7 @@ namespace ComplaintApi.Services
 
         ModuleMaster GetModuleMaster(string moduleId);
 
+       
         bool ModuleExist(string ModuleID);
 
         void UpdateModuleMaster(ModuleMaster module);
@@ -38,5 +41,9 @@ namespace ComplaintApi.Services
         void UpdatePriorityMaster(PriorityMaster priority);
         void UpdateComplainsMaster(CompanyMaster complainsMasterForUpdateRepo);
         void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo);
+
+        //usermaster Repo
+        UserMaster GetUser(string empId);
+        //void UpdateCompanyMaster(UserMaster userMasterForUpdateRepo);
     }
 }

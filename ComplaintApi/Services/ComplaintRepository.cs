@@ -25,6 +25,12 @@ namespace ComplaintApi.Services
             return _context.CompanyMaster.FirstOrDefault(c => c.CompanyID == companyId);
         }
 
+        public CompanyMaster GetCompanyMaster(string companyId)
+        {
+            return _context.CompanyMaster.FirstOrDefault(c => c.CompanyID == companyId);
+            //throw new NotImplementedException();
+        }
+
         public ComplainsHistory GetComplainsHistory(string HistoryId)
         {
             throw new NotImplementedException();

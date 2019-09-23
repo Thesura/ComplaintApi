@@ -44,6 +44,7 @@ namespace ComplaintApi
             AutoMapper.Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<CompanyMaster, CompanyMasterDto>();
+                cfg.CreateMap<UserMaster, UserMasterDto>();
                 cfg.CreateMap<Models.CompanyMasterForUpdateDto, Entities.CompanyMaster>();
                 cfg.CreateMap<Models.ModuleMasterForUpdateDto, Entities.ModuleMaster>();
                 cfg.CreateMap<Models.PriorityMasterForUpdateDto, Entities.PriorityMaster>();
