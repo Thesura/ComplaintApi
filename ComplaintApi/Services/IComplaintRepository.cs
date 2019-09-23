@@ -16,6 +16,15 @@ namespace ComplaintApi.Services
 
         bool Save();
         //modulemaster Repo
+
+        ComplainsHistory GetComplainsHistory(string HistoryId);
+
+        bool HistoryExist(string HistoryID);
+
+        void UpdateComplainHistory(ComplainsHistory history);
+
+        //void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo);
+
         ModuleMaster GetModuleMaster(string moduleId);
 
         bool ModuleExist(string ModuleID);
@@ -28,5 +37,6 @@ namespace ComplaintApi.Services
 
         void UpdatePriorityMaster(PriorityMaster priority);
         void UpdateComplainsMaster(CompanyMaster complainsMasterForUpdateRepo);
+        void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo);
     }
 }
