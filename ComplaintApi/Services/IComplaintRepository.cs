@@ -21,5 +21,11 @@ namespace ComplaintApi.Services
         bool ModuleExist(string ModuleID);
 
         void UpdateModuleMaster(ModuleMaster module);
+        //prioritymaster Repo
+        PriorityMaster GetPriorityMaster(string priorityId);
+
+        bool PriorityExist(string PriorityID);
+
+        void UpdatePriorityMaster(PriorityMaster priority);
     }
 }
