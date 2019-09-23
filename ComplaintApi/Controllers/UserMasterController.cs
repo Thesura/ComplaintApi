@@ -19,6 +19,15 @@ namespace ComplaintApi.Controllers
             _complaintRepository = complaintRepository;
         }
 
+        [HttpGet("{empId}", Name = "getemp")]
+        public IActionResult getUser(string empId)
+        {
+            var UserFromRepo = _complaintRepository.GetUser(empId);
+
+            var userToReturn = Mapper.Map<UserMasterDto>(UserFromRepo);
+
+            return Ok(userToReturn);
+        }
 
         [HttpPut("{EmpId}")]
         public IActionResult UpdateCompanyMaster(String empId,

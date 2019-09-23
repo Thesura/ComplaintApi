@@ -27,5 +27,6 @@ namespace ComplaintApi.Services
         bool PriorityExist(string PriorityID);
 
         void UpdatePriorityMaster(PriorityMaster priority);
+        void UpdateComplainsMaster(CompanyMaster complainsMasterForUpdateRepo);
     }
 }
