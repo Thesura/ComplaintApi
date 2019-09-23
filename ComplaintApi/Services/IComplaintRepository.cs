@@ -15,5 +15,11 @@ namespace ComplaintApi.Services
         void UpdateCompanyMaster(CompanyMaster company);
 
         bool Save();
+        //modulemaster Repo
+        ModuleMaster GetModuleMaster(string moduleId);
+
+        bool ModuleExist(string ModuleID);
+
+        void UpdateModuleMaster(ModuleMaster module);
     }
 }

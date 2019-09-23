@@ -45,6 +45,7 @@ namespace ComplaintApi
             {
                 cfg.CreateMap<CompanyMaster, CompanyMasterDto>();
                 cfg.CreateMap<Models.CompanyMasterForUpdateDto, Entities.CompanyMaster>();
+                cfg.CreateMap<Models.ModuleMasterForUpdateDto, Entities.ModuleMaster>();
             });
 
             services.AddScoped<IComplaintRepository, ComplaintRepository>();
