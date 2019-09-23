@@ -25,6 +25,47 @@ namespace ComplaintApi.Services
             return _context.CompanyMaster.FirstOrDefault(c => c.CompanyID == companyId);
         }
 
+        public ComplainsHistory GetComplainsHistory(string HistoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ModuleMaster GetModuleMaster(string moduleId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PriorityMaster GetPriorityMaster(string priorityId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserMaster GetUser(string empId)
+        {
+            return _context.UserMaster.FirstOrDefault(c => c.EmpID == empId);
+        }
+
+        public UserMaster GetUserMaster(string empId)
+        {
+            return _context.UserMaster.FirstOrDefault(c => c.EmpID == empId);
+            //throw new NotImplementedException();
+        }
+
+        public bool HistoryExist(string HistoryID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ModuleExist(string ModuleID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool PriorityExist(string PriorityID)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Save()
         {
             return (_context.SaveChanges() >= 0);
@@ -35,5 +76,46 @@ namespace ComplaintApi.Services
         {
             //throw new NotImplementedException();
         }
+
+        public void UpdateCompanyMaster(UserMaster userMasterForUpdateRepo)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void UpdateComplainHistory(ComplainsHistory history)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateComplainsMaster(CompanyMaster complainsMasterForUpdateRepo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateModuleMaster(ModuleMaster module)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePriorityMaster(PriorityMaster priority)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateUserMaster(UserMaster user)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public bool UserExist(string EmpID)
+        {
+            throw new NotImplementedException();
+        }
+        //------------------------------------
     }
 }
