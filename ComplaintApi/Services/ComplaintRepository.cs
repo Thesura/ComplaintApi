@@ -103,5 +103,24 @@ namespace ComplaintApi.Services
         {
             return _context.UserModule.Any(um => um.EmpID == empId && um.ModuleID == moduleId);
         }
-    }
+
+
+		public bool Save()
+		{
+			return (_context.SaveChanges() >= 0);
+		}
+
+
+		//methods for delete requests
+
+		public void DeleteCompany(CompanyMaster companyMaster)
+		{
+			_context.CompanyMaster.Remove(companyMaster);
+		}
+
+		public bool CompanyExists(object companyId)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

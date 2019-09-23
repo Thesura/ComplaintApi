@@ -33,5 +33,25 @@ namespace ComplaintApi.Controllers
 
             return Ok(companyToReturn);
         }
-    }
+
+		[HttpDelete("{companyId}")]
+
+		public IActionResult deleteCompany(String companyId)
+		{
+			var companyFromRepo = _complaintRepository.GetCompany(companyId);
+
+			if (companyFromRepo == null)
+			{
+				return NotFound();
+			}
+			_complaintRepository.DeleteCompany(companyFromRepo);
+
+			if (!_complaintRepository.Save())
+			{
+				throw new Exception($"Delete a member {companyId} failed");
+			}
+
+			return NoContent();
+		}
+	}
 }

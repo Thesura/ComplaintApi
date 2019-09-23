@@ -40,5 +40,10 @@ namespace ComplaintApi.Services
 
         bool complainHistoryExists(string historyId, string complainId);
 
-    }
+		// Delete request
+
+		void DeleteCompany(CompanyMaster companyMaster);
+		bool Save();
+		bool CompanyExists(object companyId);
+	}
 }
