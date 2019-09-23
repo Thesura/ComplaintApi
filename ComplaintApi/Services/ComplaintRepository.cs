@@ -27,12 +27,13 @@ namespace ComplaintApi.Services
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return (_context.SaveChanges() >= 0);
+            //throw new NotImplementedException();
         }
 
         public void UpdateCompanyMaster(CompanyMaster company)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
