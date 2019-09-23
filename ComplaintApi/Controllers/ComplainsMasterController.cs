@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using ComplaintApi.Models;
 using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +19,21 @@ namespace ComplaintApi.Controllers
         public ComplainsMasterController(IComplaintRepository complaintRepository)
         {
             _complaintRepository = complaintRepository;
+        }
+
+        [HttpGet(Name = "getComplain")]
+        public IActionResult getComplain([FromQuery] string companyId, string moduleId,string empId, string priorityId)
+        {
+            if(!_complaintRepository.complainExists(companyId, moduleId, empId, priorityId))
+            {
+                return NotFound();
+            }
+
+            var complainFromRepo = _complaintRepository.getComplain(companyId, moduleId, empId, priorityId);
+
+            var complainToReturn = Mapper.Map<ComplainsMasterDto>(complainFromRepo);
+
+            return Ok(complainToReturn);
         }
     }
 }

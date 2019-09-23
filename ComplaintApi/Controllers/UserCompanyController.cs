@@ -1,4 +1,6 @@
-﻿using ComplaintApi.Services;
+﻿using AutoMapper;
+using ComplaintApi.Models;
+using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,21 @@ namespace ComplaintApi.Controllers
         public UserCompanyController(IComplaintRepository complaintRepository)
         {
             _complaintRepository = complaintRepository;
+        }
+
+        [HttpGet(Name = "getUserCompany")]
+        public IActionResult getUserCompany([FromQuery] string empId, string companyId)
+        {
+            if(!_complaintRepository.userCompanyExists(empId, companyId))
+            {
+                return NotFound();
+            }
+
+            var userCompanyFromRepo = _complaintRepository.getUserCompany(empId, companyId);
+
+            var userCompanyToReturn = Mapper.Map<UserCompanyDto>(userCompanyFromRepo);
+
+            return Ok(userCompanyToReturn);
         }
     }
 }

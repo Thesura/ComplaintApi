@@ -22,6 +22,11 @@ namespace ComplaintApi.Controllers
         [HttpGet("{companyId}", Name = "getCompany")]
         public IActionResult getCompany(string companyId)
         {
+            if (!_complaintRepository.companyExists(companyId))
+            {
+                return NotFound();
+            }
+
             var companyFromRepo = _complaintRepository.GetCompany(companyId);
 
             var companyToReturn = Mapper.Map<CompanyMasterDto>(companyFromRepo);

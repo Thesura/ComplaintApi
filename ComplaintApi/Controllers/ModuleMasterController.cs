@@ -1,4 +1,6 @@
-﻿using ComplaintApi.Services;
+﻿using AutoMapper;
+using ComplaintApi.Models;
+using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,5 +18,21 @@ namespace ComplaintApi.Controllers
         {
             _complaintRepository = complaintRepository;
         }
+
+        [HttpGet("{moduleId}", Name = "getModule")]
+        public IActionResult getModule(string moduleId)
+        {
+            if (!_complaintRepository.moduleExists(moduleId))
+            {
+                return NotFound();
+            }
+
+            var moduleFromRepo = _complaintRepository.getModule(moduleId);
+
+            var moduleToReturn = Mapper.Map<ModuleMasterDto>(moduleFromRepo);
+
+            return Ok(moduleToReturn);
+        }
+
     }
 }

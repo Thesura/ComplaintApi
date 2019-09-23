@@ -1,4 +1,6 @@
-﻿using ComplaintApi.Services;
+﻿using AutoMapper;
+using ComplaintApi.Models;
+using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,22 @@ namespace ComplaintApi.Controllers
         public ComplainsHistoryController(IComplaintRepository complaintRepository)
         {
             _complaintRepository = complaintRepository;
+        }
+
+        [HttpGet(Name = "getComplainsHistory")]
+        public IActionResult getComplainsHistory([FromQuery] string historyId, string complainId)
+        {
+            if(!_complaintRepository.complainHistoryExists(historyId, complainId))
+            {
+                return NotFound();
+            }
+
+
+            var complainHistoryFromRepo = _complaintRepository.getComplainsHistory(historyId, complainId);
+
+            var complainHistoryToReturn = Mapper.Map<ComplainsHistoryDto>(complainHistoryFromRepo);
+
+            return Ok(complainHistoryToReturn);
         }
     }
 }

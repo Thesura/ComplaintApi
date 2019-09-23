@@ -1,4 +1,6 @@
-﻿using ComplaintApi.Services;
+﻿using AutoMapper;
+using ComplaintApi.Models;
+using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,21 @@ namespace ComplaintApi.Controllers
         public UserMasterController(IComplaintRepository complaintRepository)
         {
             _complaintRepository = complaintRepository;
+        }
+
+        [HttpGet("{empId}", Name = "getUser")]
+        public IActionResult getUser(string empId)
+        {
+            if (!_complaintRepository.userExists(empId))
+            {
+                return NotFound();
+            }
+
+            var userFromRepo = _complaintRepository.getUser(empId);
+
+            var userToReturn = Mapper.Map<UserMasterDto>(userFromRepo);
+
+            return Ok(userToReturn);
         }
     }
 }
