@@ -12,13 +12,15 @@ namespace ComplaintApi.Models
         [MaxLength(100)]
         public string COMPCODE { get; set; }
 
+        /* [Required]
+         [MaxLength(100)]
+         public string CompanyID { get; set; }
+         */
         [Required]
-        [MaxLength(100)]
-        public string CompanyID { get; set; }
-
         [MaxLength(150)]
         public string CompanyName { get; set; }
 
+        [Required]
         [MaxLength(50)]
         public string Email { get; set; }
     }

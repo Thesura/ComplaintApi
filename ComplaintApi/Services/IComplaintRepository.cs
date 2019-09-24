@@ -15,9 +15,9 @@ namespace ComplaintApi.Services
 
         void UpdateCompanyMaster(CompanyMaster company);
 
-        bool Save();
-        //modulemaster Repo
+        void UpdateUserMaster(UserMaster user);
 
+        bool Save();
         
         ComplainsHistory GetComplainsHistory(string HistoryId);
 
@@ -28,7 +28,6 @@ namespace ComplaintApi.Services
         //void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo);
 
         ModuleMaster GetModuleMaster(string moduleId);
-
        
         bool ModuleExist(string ModuleID);
 

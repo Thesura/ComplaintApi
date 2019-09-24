@@ -30,7 +30,7 @@ namespace ComplaintApi.Controllers
         }
 
         [HttpPut("{EmpId}")]
-        public IActionResult UpdateCompanyMaster(String empId,
+        public IActionResult UpdateUserMaster(String empId,
            [FromBody] UserMasterForUpdateDto user)
         {
             if (user == null)
@@ -53,7 +53,7 @@ namespace ComplaintApi.Controllers
             //map back to enitiy
             Mapper.Map(user, UserMasterForUpdateRepo);
 
-            _complaintRepository.UpdateCompanyMaster(UserMasterForUpdateRepo);
+            _complaintRepository.UpdateUserMaster(UserMasterForUpdateRepo);
 
             if (!_complaintRepository.Save())
             {
