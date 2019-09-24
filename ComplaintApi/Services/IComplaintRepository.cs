@@ -46,6 +46,8 @@ namespace ComplaintApi.Services
 		void DeleteModule(ModuleMaster moduleMaster);
 		void DeletePriority(PriorityMaster priorityMaster);
 		void DeleteUser(UserMaster userMaster);
+		void DeleteUserCompany(UserCompany userCompany);
+		void DeleteUserModule(UserModule userModule);
 
 		bool Save();
 		bool CompanyExists(object companyId);

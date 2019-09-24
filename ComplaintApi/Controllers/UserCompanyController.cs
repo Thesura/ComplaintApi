@@ -33,5 +33,27 @@ namespace ComplaintApi.Controllers
 
             return Ok(userCompanyToReturn);
         }
-    }
+
+		[HttpDelete(Name = "getUserCompany")]
+
+		public IActionResult deleteUserCompany([FromQuery] string empId, string companyId)
+		{
+			var usercompanyFromRepo = _complaintRepository.getUserCompany(empId,companyId);
+
+			if (usercompanyFromRepo == null)
+			{
+				return NotFound();
+			}
+			_complaintRepository.DeleteUserCompany(usercompanyFromRepo);
+
+			if (!_complaintRepository.Save())
+			{
+				throw new Exception($"Delete a member {empId} and company {companyId} failed");
+			}
+
+			return NoContent();
+		}
+
+
+	}
 }

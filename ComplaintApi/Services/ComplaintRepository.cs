@@ -152,5 +152,15 @@ namespace ComplaintApi.Services
 		{
 			throw new NotImplementedException();
 		}
+
+		public void DeleteUserCompany(UserCompany userCompany)
+		{
+			_context.UserCompany.Remove(userCompany);
+		}
+
+		public void DeleteUserModule(UserModule userModule)
+		{
+			_context.UserModule.Remove(userModule);
+		}
 	}
 }
