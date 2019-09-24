@@ -142,5 +142,15 @@ namespace ComplaintApi.Services
 		{
 			throw new NotImplementedException();
 		}
+
+		public void DeleteUser(UserMaster userMaster)
+		{
+			_context.UserMaster.Remove(userMaster);
+		}
+
+		public bool UserExists(object empId)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
