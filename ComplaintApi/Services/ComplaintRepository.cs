@@ -132,5 +132,15 @@ namespace ComplaintApi.Services
 		{
 			throw new NotImplementedException();
 		}
+
+		public void DeletePriority(PriorityMaster priorityMaster)
+		{
+			_context.PriorityMaster.Remove(priorityMaster);
+		}
+
+		public bool PriorityExists(object priorityId)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

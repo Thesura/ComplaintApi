@@ -44,10 +44,12 @@ namespace ComplaintApi.Services
 
 		void DeleteCompany(CompanyMaster companyMaster);
 		void DeleteModule(ModuleMaster moduleMaster);
+		void DeletePriority(PriorityMaster priorityMaster);
 
 		bool Save();
 		bool CompanyExists(object companyId);
 		bool ModuleExists(object moduleId);
+		bool PriorityExists(object priorityId);
 
 
 	}

@@ -33,5 +33,25 @@ namespace ComplaintApi.Controllers
 
             return Ok(priorityToReturn);
         }
-    }
+
+		[HttpDelete("{priorityId}")]
+
+		public IActionResult deletePriority(String priorityId)
+		{
+			var priorityFromRepo = _complaintRepository.getPriority(priorityId);
+
+			if (priorityFromRepo == null)
+			{
+				return NotFound();
+			}
+			_complaintRepository.DeletePriority(priorityFromRepo);
+
+			if (!_complaintRepository.Save())
+			{
+				throw new Exception($"Delete a member {priorityId} failed");
+			}
+
+			return NoContent();
+		}
+	}
 }
