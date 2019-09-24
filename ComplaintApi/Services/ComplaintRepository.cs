@@ -36,9 +36,16 @@ namespace ComplaintApi.Services
             throw new NotImplementedException();
         }
 
+        public object GetModule(string moduleId)
+        {
+            return _context.ModuleMaster.FirstOrDefault(c => c.ModuleID == moduleId);
+            // throw new NotImplementedException();
+        }
+
         public ModuleMaster GetModuleMaster(string moduleId)
         {
-            throw new NotImplementedException();
+            return _context.ModuleMaster.FirstOrDefault(c => c.ModuleID == moduleId);
+            //throw new NotImplementedException();
         }
 
         public PriorityMaster GetPriorityMaster(string priorityId)
@@ -105,7 +112,7 @@ namespace ComplaintApi.Services
 
         public void UpdateModuleMaster(ModuleMaster module)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void UpdatePriorityMaster(PriorityMaster priority)
@@ -122,6 +129,5 @@ namespace ComplaintApi.Services
         {
             throw new NotImplementedException();
         }
-        //------------------------------------
     }
 }

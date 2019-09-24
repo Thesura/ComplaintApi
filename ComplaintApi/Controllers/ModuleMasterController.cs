@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ComplaintApi.Controllers
 {
-    [Route("api/companymasters")]
+    [Route("api/modulemasters")]
     public class ModuleController : Controller
     {
         private IComplaintRepository _complaintRepository;
@@ -17,6 +17,16 @@ namespace ComplaintApi.Controllers
         public ModuleController(IComplaintRepository complaintRepository)
         {
             _complaintRepository = complaintRepository;
+        }
+
+        [HttpGet("{moduleId}", Name = "getmodule")]
+        public IActionResult getModule(string moduleId)
+        {
+            var ModuleFromRepo = _complaintRepository.GetModule(moduleId);
+
+            var moduleToReturn = Mapper.Map<ModuleMasterDto>(ModuleFromRepo);
+
+            return Ok(moduleToReturn);
         }
 
         [HttpPut("{moduleId}")]

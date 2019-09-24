@@ -15,8 +15,6 @@ namespace ComplaintApi.Services
 
         void UpdateCompanyMaster(CompanyMaster company);
 
-        void UpdateUserMaster(UserMaster user);
-
         bool Save();
         
         ComplainsHistory GetComplainsHistory(string HistoryId);
@@ -24,25 +22,26 @@ namespace ComplaintApi.Services
         bool HistoryExist(string HistoryID);
 
         void UpdateComplainHistory(ComplainsHistory history);
+        object GetModule(string moduleId);
 
         //void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo);
-
+        //modulemaster Repo
         ModuleMaster GetModuleMaster(string moduleId);
-       
         bool ModuleExist(string ModuleID);
-
         void UpdateModuleMaster(ModuleMaster module);
+
         //prioritymaster Repo
         PriorityMaster GetPriorityMaster(string priorityId);
-
         bool PriorityExist(string PriorityID);
-
         void UpdatePriorityMaster(PriorityMaster priority);
+
         void UpdateComplainsMaster(CompanyMaster complainsMasterForUpdateRepo);
+
         void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo);
 
         //usermaster Repo
         UserMaster GetUser(string empId);
-        //void UpdateCompanyMaster(UserMaster userMasterForUpdateRepo);
+        void UpdateUserMaster(UserMaster user);
+
     }
 }
