@@ -43,7 +43,12 @@ namespace ComplaintApi.Services
 		// Delete request
 
 		void DeleteCompany(CompanyMaster companyMaster);
+		void DeleteModule(ModuleMaster moduleMaster);
+
 		bool Save();
 		bool CompanyExists(object companyId);
+		bool ModuleExists(object moduleId);
+
+
 	}
 }

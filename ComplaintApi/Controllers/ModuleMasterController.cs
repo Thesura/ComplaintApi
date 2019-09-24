@@ -34,5 +34,24 @@ namespace ComplaintApi.Controllers
             return Ok(moduleToReturn);
         }
 
-    }
+		[HttpDelete("{moduleId}")]
+
+		public IActionResult deleteModule(String moduleId)
+		{
+			var moduleFromRepo = _complaintRepository.getModule(moduleId);
+
+			if (moduleFromRepo == null)
+			{
+				return NotFound();
+			}
+			_complaintRepository.DeleteModule(moduleFromRepo);
+
+			if (!_complaintRepository.Save())
+			{
+				throw new Exception($"Delete a member {moduleId} failed");
+			}
+
+			return NoContent();
+		}
+	}
 }

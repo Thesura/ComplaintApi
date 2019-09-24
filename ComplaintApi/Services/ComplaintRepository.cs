@@ -113,12 +113,22 @@ namespace ComplaintApi.Services
 
 		//methods for delete requests
 
+		public bool CompanyExists(object companyId)
+		{
+			throw new NotImplementedException();
+		}
+
 		public void DeleteCompany(CompanyMaster companyMaster)
 		{
 			_context.CompanyMaster.Remove(companyMaster);
 		}
 
-		public bool CompanyExists(object companyId)
+		public void DeleteModule(ModuleMaster moduleMaster)
+		{
+			_context.ModuleMaster.Remove(moduleMaster);
+		}
+
+		public bool ModuleExists(object moduleId)
 		{
 			throw new NotImplementedException();
 		}
