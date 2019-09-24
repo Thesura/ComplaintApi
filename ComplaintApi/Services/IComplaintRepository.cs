@@ -34,6 +34,7 @@ namespace ComplaintApi.Services
         PriorityMaster GetPriorityMaster(string priorityId);
         bool PriorityExist(string PriorityID);
         void UpdatePriorityMaster(PriorityMaster priority);
+        //PriorityMaster GetPriority(string priorityId);
 
         void UpdateComplainsMaster(CompanyMaster complainsMasterForUpdateRepo);
 
@@ -41,7 +42,9 @@ namespace ComplaintApi.Services
 
         //usermaster Repo
         UserMaster GetUser(string empId);
+        object GetPriority(string priorityId);
         void UpdateUserMaster(UserMaster user);
 
+        void UpdatePriorityMaster(object priorityMasterForUpdateRepo);
     }
 }

@@ -46,6 +46,7 @@ namespace ComplaintApi
                 cfg.CreateMap<CompanyMaster, CompanyMasterDto>();
                 cfg.CreateMap<UserMaster, UserMasterDto>();
                 cfg.CreateMap<ModuleMaster, ModuleMasterDto>();
+                cfg.CreateMap<PriorityMaster, PriorityMasterDto>();
                 cfg.CreateMap<Models.CompanyMasterForUpdateDto, Entities.CompanyMaster>();
                 cfg.CreateMap<Models.ModuleMasterForUpdateDto, Entities.ModuleMaster>();
                 cfg.CreateMap<Models.PriorityMasterForUpdateDto, Entities.PriorityMaster>();

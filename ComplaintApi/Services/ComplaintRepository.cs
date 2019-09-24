@@ -48,9 +48,16 @@ namespace ComplaintApi.Services
             //throw new NotImplementedException();
         }
 
+        public PriorityMaster GetPriority(string priorityId)
+        {
+            return _context.PriorityMaster.FirstOrDefault(c => c.PriorityID == priorityId);
+            //throw new NotImplementedException();
+        }
+
         public PriorityMaster GetPriorityMaster(string priorityId)
         {
-            throw new NotImplementedException();
+            return _context.PriorityMaster.FirstOrDefault(c => c.PriorityID == priorityId);
+            //throw new NotImplementedException();
         }
 
         public UserMaster GetUser(string empId)
@@ -117,6 +124,11 @@ namespace ComplaintApi.Services
 
         public void UpdatePriorityMaster(PriorityMaster priority)
         {
+            //throw new NotImplementedException();
+        }
+
+        public void UpdatePriorityMaster(object priorityMasterForUpdateRepo)
+        {
             throw new NotImplementedException();
         }
 
@@ -128,6 +140,12 @@ namespace ComplaintApi.Services
         public bool UserExist(string EmpID)
         {
             throw new NotImplementedException();
+        }
+
+        object IComplaintRepository.GetPriority(string priorityId)
+        {
+            return _context.PriorityMaster.FirstOrDefault(c => c.PriorityID == priorityId);
+            //throw new NotImplementedException();
         }
     }
 }

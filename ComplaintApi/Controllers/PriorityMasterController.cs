@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ComplaintApi.Controllers
 {
-    [Route("api/companymasters")]
+    [Route("api/prioritymasters")]
     public class PriorityMasterController : Controller
     {
         private IComplaintRepository _complaintRepository;
@@ -17,6 +17,16 @@ namespace ComplaintApi.Controllers
         public PriorityMasterController(IComplaintRepository complaintRepository)
         {
             _complaintRepository = complaintRepository;
+        }
+
+        [HttpGet("{priorityId}", Name = "getpriority")]
+        public IActionResult getPriority(string priorityId)
+        {
+            var PriorityFromRepo = _complaintRepository.GetPriority(priorityId);
+
+            var priorityToReturn = Mapper.Map<PriorityMasterDto>(PriorityFromRepo);
+
+            return Ok(priorityToReturn);
         }
 
         [HttpPut("{priorityId}")]
@@ -34,16 +44,16 @@ namespace ComplaintApi.Controllers
                }
                  */
 
-            var CompanyMasterForUpdateRepo = _complaintRepository.GetCompany(priorityId);
-            if (CompanyMasterForUpdateRepo == null)
+            var PriorityMasterForUpdateRepo = _complaintRepository.GetPriority(priorityId);
+            if (PriorityMasterForUpdateRepo == null)
             {
                 return NotFound();
             }
 
             //map back to enitiy
-            Mapper.Map(priority, CompanyMasterForUpdateRepo);
+            Mapper.Map(priority, PriorityMasterForUpdateRepo);
 
-            _complaintRepository.UpdateCompanyMaster(CompanyMasterForUpdateRepo);
+            _complaintRepository.UpdatePriorityMaster(PriorityMasterForUpdateRepo);
 
             if (!_complaintRepository.Save())
             {
