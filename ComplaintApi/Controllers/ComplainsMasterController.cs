@@ -21,15 +21,15 @@ namespace ComplaintApi.Controllers
             _complaintRepository = complaintRepository;
         }
 
-        [HttpGet(Name = "getComplain")]
-        public IActionResult getComplain([FromQuery] string companyId, string moduleId,string empId, string priorityId)
+        [HttpGet("{complainId}", Name = "getComplain")]
+        public IActionResult getComplain(string complainId)
         {
-            if(!_complaintRepository.complainExists(companyId, moduleId, empId, priorityId))
+            if(!_complaintRepository.complainExists(complainId))
             {
                 return NotFound();
             }
 
-            var complainFromRepo = _complaintRepository.getComplain(companyId, moduleId, empId, priorityId);
+            var complainFromRepo = _complaintRepository.getComplain(complainId);
 
             var complainToReturn = Mapper.Map<ComplainsMasterDto>(complainFromRepo);
 

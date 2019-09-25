@@ -32,9 +32,9 @@ namespace ComplaintApi.Services
 
         bool userModuleExists(string empId, string moduleId);
 
-        ComplainsMaster getComplain(string companyId, string moduleId, string empId, string priorityId);
+        ComplainsMaster getComplain(string complainId);
 
-        bool complainExists(string companyId, string moduleId, string empId, string priorityId);
+        bool complainExists(string complainId);
 
         ComplainsHistory getComplainsHistory(string historyId, string complainId);
 

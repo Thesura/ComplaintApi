@@ -22,10 +22,10 @@ namespace ComplaintApi.Services
             return _context.CompanyMaster.Where(c => c.CompanyID == companyId).FirstOrDefault();
         }
 
-        public ComplainsMaster getComplain(string companyId, string moduleId, string empId, string priorityId)
+        public ComplainsMaster getComplain(string complainId)
         {
             return _context.ComplainsMaster.Where
-                (cm => cm.CompanyID == companyId && cm.ModuleID == moduleId && cm.EmpID == empId && cm.PriorityID == priorityId)
+                (cm => cm.ComplainID == complainId)
                 .FirstOrDefault();
         }
 
@@ -68,10 +68,10 @@ namespace ComplaintApi.Services
             return _context.CompanyMaster.Any(c => c.CompanyID == companyId);
         }
 
-        public bool complainExists(string companyId, string moduleId, string empId, string priorityId)
+        public bool complainExists(string complainId)
         {
             return _context.ComplainsMaster.Any
-                (cm => cm.CompanyID == companyId && cm.ModuleID == moduleId && cm.EmpID == empId && cm.PriorityID == priorityId);
+                (cm => cm.ComplainID == complainId);
         }
 
         public bool complainHistoryExists(string historyId, string complainId)

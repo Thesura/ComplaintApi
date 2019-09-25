@@ -34,9 +34,6 @@ namespace ComplaintApi.Entities
             modelBuilder.Entity<ComplainsHistory>()
                 .HasKey(o => new { o.HistoryID, o.ComplainID });
 
-            modelBuilder.Entity<ComplainsMaster>()
-                .HasKey(o => new { o.CompanyID, o.ModuleID, o.EmpID, o.PriorityID });
-
             modelBuilder.Entity<UserCompany>()
                 .HasKey(o => new { o.EmpID, o.CompanyID });
 
