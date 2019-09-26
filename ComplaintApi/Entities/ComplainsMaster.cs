@@ -13,6 +13,11 @@ namespace ComplaintApi.Entities
         [MaxLength(100)]
         public string COMPCODE { get; set; }
 
+        [Key]
+        [Required]
+        [MaxLength(50)]
+        public string ComplainID { get; set; }
+
         [ForeignKey("CompanyID")]
         [Required]
         [MaxLength(100)]

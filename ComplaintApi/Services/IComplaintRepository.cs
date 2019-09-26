@@ -32,9 +32,9 @@ namespace ComplaintApi.Services
 
         bool userModuleExists(string empId, string moduleId);
 
-        ComplainsMaster getComplain(string companyId, string moduleId, string empId, string priorityId);
+        ComplainsMaster getComplain(string complainId);
 
-        bool complainExists(string companyId, string moduleId, string empId, string priorityId);
+        bool complainExists(string complainId);
 
         ComplainsHistory getComplainsHistory(string historyId, string complainId);
 
@@ -48,8 +48,10 @@ namespace ComplaintApi.Services
 		void DeleteUser(UserMaster userMaster);
 		void DeleteUserCompany(UserCompany userCompany);
 		void DeleteUserModule(UserModule userModule);
+        void DeleteComplain(ComplainsMaster complainsMaster);
+        void DeleteComplainHistory(ComplainsHistory complainsHistory);
 
-		bool Save();
+        bool Save();
 		bool CompanyExists(object companyId);
 		bool ModuleExists(object moduleId);
 		bool PriorityExists(object priorityId);
