@@ -39,25 +39,21 @@ namespace ComplaintApi.Services
         public object GetModule(string moduleId)
         {
             return _context.ModuleMaster.FirstOrDefault(c => c.ModuleID == moduleId);
-            // throw new NotImplementedException();
         }
 
         public ModuleMaster GetModuleMaster(string moduleId)
         {
             return _context.ModuleMaster.FirstOrDefault(c => c.ModuleID == moduleId);
-            //throw new NotImplementedException();
         }
 
         public PriorityMaster GetPriority(string priorityId)
         {
             return _context.PriorityMaster.FirstOrDefault(c => c.PriorityID == priorityId);
-            //throw new NotImplementedException();
         }
 
         public PriorityMaster GetPriorityMaster(string priorityId)
         {
             return _context.PriorityMaster.FirstOrDefault(c => c.PriorityID == priorityId);
-            //throw new NotImplementedException();
         }
 
         public UserMaster GetUser(string empId)
@@ -68,7 +64,6 @@ namespace ComplaintApi.Services
         public UserMaster GetUserMaster(string empId)
         {
             return _context.UserMaster.FirstOrDefault(c => c.EmpID == empId);
-            //throw new NotImplementedException();
         }
 
         public bool HistoryExist(string HistoryID)
@@ -83,7 +78,7 @@ namespace ComplaintApi.Services
 
         public bool PriorityExist(string PriorityID)
         {
-            throw new NotImplementedException();
+           return _context.PriorityMaster.Any(o => o.PriorityID == PriorityID);
         }
 
         public bool Save()
@@ -104,37 +99,32 @@ namespace ComplaintApi.Services
 
         public void UpdateComplainHistory(ComplainsHistory history)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void UpdateComplainsMaster(CompanyMaster complainsMasterForUpdateRepo)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void UpdateModuleMaster(ModuleMaster module)
         {
-            //throw new NotImplementedException();
+           
         }
 
         public void UpdatePriorityMaster(PriorityMaster priority)
         {
-            //throw new NotImplementedException();
-        }
-
-        public void UpdatePriorityMaster(object priorityMasterForUpdateRepo)
-        {
-            throw new NotImplementedException();
+           
         }
 
         public void UpdateUserMaster(UserMaster user)
         {
-            //throw new NotImplementedException();
+            
         }
 
         public bool UserExist(string EmpID)
@@ -142,10 +132,6 @@ namespace ComplaintApi.Services
             throw new NotImplementedException();
         }
 
-        object IComplaintRepository.GetPriority(string priorityId)
-        {
-            return _context.PriorityMaster.FirstOrDefault(c => c.PriorityID == priorityId);
-            //throw new NotImplementedException();
-        }
+        
     }
 }

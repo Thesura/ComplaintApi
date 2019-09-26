@@ -17,6 +17,7 @@ namespace ComplaintApi.Entities
         [MaxLength(100)]
         public string PriorityID { get; set; }
 
+        [Required]
         [MaxLength(100)]
         public string Description { get; set; }
     }

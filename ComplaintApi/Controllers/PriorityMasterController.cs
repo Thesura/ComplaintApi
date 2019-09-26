@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace ComplaintApi.Controllers
 {
     [Route("api/prioritymasters")]
-    public class PriorityMasterController : Controller
+    public class PriorityController : Controller
     {
         private IComplaintRepository _complaintRepository;
 
-        public PriorityMasterController(IComplaintRepository complaintRepository)
+        public PriorityController(IComplaintRepository complaintRepository)
         {
             _complaintRepository = complaintRepository;
         }
@@ -22,14 +22,14 @@ namespace ComplaintApi.Controllers
         [HttpGet("{priorityId}", Name = "getpriority")]
         public IActionResult getPriority(string priorityId)
         {
-            var PriorityFromRepo = _complaintRepository.GetPriority(priorityId);
+            var PriorityFromRepo = _complaintRepository.GetPriorityMaster(priorityId);
 
             var priorityToReturn = Mapper.Map<PriorityMasterDto>(PriorityFromRepo);
 
             return Ok(priorityToReturn);
         }
 
-        [HttpPut("{priorityId}")]
+        [HttpPut("{PriorityId}")]
         public IActionResult UpdatePriorityMaster(String priorityId,
            [FromBody] PriorityMasterForUpdateDto priority)
         {
@@ -44,7 +44,7 @@ namespace ComplaintApi.Controllers
                }
                  */
 
-            var PriorityMasterForUpdateRepo = _complaintRepository.GetPriority(priorityId);
+            var PriorityMasterForUpdateRepo = _complaintRepository.GetPriorityMaster(priorityId);
             if (PriorityMasterForUpdateRepo == null)
             {
                 return NotFound();

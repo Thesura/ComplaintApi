@@ -23,6 +23,7 @@ namespace ComplaintApi.Services
 
         void UpdateComplainHistory(ComplainsHistory history);
         object GetModule(string moduleId);
+        PriorityMaster GetPriority(string priorityId);
 
         //void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo);
         //modulemaster Repo
@@ -30,11 +31,10 @@ namespace ComplaintApi.Services
         bool ModuleExist(string ModuleID);
         void UpdateModuleMaster(ModuleMaster module);
 
-        //prioritymaster Repo
+        //priorityMaster Repo
         PriorityMaster GetPriorityMaster(string priorityId);
         bool PriorityExist(string PriorityID);
         void UpdatePriorityMaster(PriorityMaster priority);
-        //PriorityMaster GetPriority(string priorityId);
 
         void UpdateComplainsMaster(CompanyMaster complainsMasterForUpdateRepo);
 
@@ -42,9 +42,6 @@ namespace ComplaintApi.Services
 
         //usermaster Repo
         UserMaster GetUser(string empId);
-        object GetPriority(string priorityId);
-        void UpdateUserMaster(UserMaster user);
-
-        void UpdatePriorityMaster(object priorityMasterForUpdateRepo);
+        void UpdateUserMaster(UserMaster user); 
     }
 }

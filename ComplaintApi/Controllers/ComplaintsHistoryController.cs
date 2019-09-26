@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ComplaintApi.Controllers
 {
-    [Route("api/companymasters")]
+    [Route("api/complaintshistory")]
     public class ComplaintsHistoryController : Controller
     {
         private IComplaintRepository _complaintRepository;
