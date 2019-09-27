@@ -12,6 +12,8 @@ namespace ComplaintApi.Services
 
         bool companyExists(string companyId);
 
+        IEnumerable<CompanyMaster> GetCompanyMasters();
+
         UserMaster getUser(string empId);
 
         bool userExists(string empId);
@@ -37,8 +39,15 @@ namespace ComplaintApi.Services
         bool complainExists(string complainId);
 
         ComplainsHistory getComplainsHistory(string historyId, string complainId);
-
+        IEnumerable<UserMaster> getUsers();
         bool complainHistoryExists(string historyId, string complainId);
 
+        IEnumerable<PriorityMaster> getPriorities();
+        
+
+        IEnumerable<ComplainsMaster> getAllComplains();
+
+
+        /*IEnumerable<ComplainsHistory> getComplainHistories();*/
     }
 }

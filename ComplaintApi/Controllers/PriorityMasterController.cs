@@ -33,5 +33,15 @@ namespace ComplaintApi.Controllers
 
             return Ok(priorityToReturn);
         }
+
+        [HttpGet()]
+        public IActionResult GetAllPriorities()
+        {
+            var companyFromRepo = _complaintRepository.getPriorities();
+
+            var companies = Mapper.Map<IEnumerable<CompanyMasterDto>>(companyFromRepo);
+
+            return new JsonResult(companies);
+        }
     }
 }

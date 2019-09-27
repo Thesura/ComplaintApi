@@ -22,6 +22,30 @@ namespace ComplaintApi.Services
             return _context.CompanyMaster.Where(c => c.CompanyID == companyId).FirstOrDefault();
         }
 
+        public IEnumerable<CompanyMaster> GetCompanyMasters()
+        {
+            return _context.CompanyMaster.ToList();
+        }
+        public IEnumerable<UserMaster> getUsers()
+        {
+            return _context.UserMaster.ToList();
+        }
+
+        public IEnumerable<PriorityMaster> getPriorities()
+        {
+            return _context.PriorityMaster.ToList();
+        }
+
+        public IEnumerable<ComplainsMaster> getAllComplains()
+        {
+            return _context.ComplainsMaster.ToList();
+        }
+
+        /*public IEnumerable<ComplainsHistory> getComplainHistories ()
+        {
+            return _context.ComplainsHistory.ToList();
+        }*/
+
         public ComplainsMaster getComplain(string complainId)
         {
             return _context.ComplainsMaster.Where
@@ -103,5 +127,15 @@ namespace ComplaintApi.Services
         {
             return _context.UserModule.Any(um => um.EmpID == empId && um.ModuleID == moduleId);
         }
+
+       
+
+
+
+
+        /*public IEnumerable<UserMaster> getUsers()
+        {
+            throw new NotImplementedException();
+        }*/
     }
 }
