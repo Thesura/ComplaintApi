@@ -13,10 +13,12 @@ namespace ComplaintApi.Controllers
     public class UserMasterController : Controller
     {
         private IComplaintRepository _complaintRepository;
+        private Security _security;
 
-        public UserMasterController(IComplaintRepository complaintRepository)
+        public UserMasterController(IComplaintRepository complaintRepository, Security security)
         {
             _complaintRepository = complaintRepository;
+            _security = security;
         }
 
         [HttpGet("{empId}", Name = "getUser")]
@@ -32,6 +34,21 @@ namespace ComplaintApi.Controllers
             var userToReturn = Mapper.Map<UserMasterDto>(userFromRepo);
 
             return Ok(userToReturn);
+        }
+
+        [Route("login")]
+        [HttpGet(Name = "login")]
+        public IActionResult userLogin([FromQuery] string userName, string password)
+        {
+            var userFromRepo = _complaintRepository.getUserForAuthentication(userName);
+
+            var userToValidate = Mapper.Map<UserMasterDto>(userFromRepo);
+
+            if (_security.authenticate(userToValidate, userName, password))
+            {
+                return Ok();
+            }
+            else return StatusCode(401);
         }
     }
 }

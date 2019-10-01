@@ -103,5 +103,10 @@ namespace ComplaintApi.Services
         {
             return _context.UserModule.Any(um => um.EmpID == empId && um.ModuleID == moduleId);
         }
+
+        public UserMaster getUserForAuthentication(string name)
+        {
+            return _context.UserMaster.Where(u => u.Name == name).FirstOrDefault();
+        }
     }
 }

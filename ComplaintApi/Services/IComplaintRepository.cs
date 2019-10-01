@@ -14,6 +14,8 @@ namespace ComplaintApi.Services
 
         UserMaster getUser(string empId);
 
+        UserMaster getUserForAuthentication(string name);
+
         bool userExists(string empId);
 
         ModuleMaster getModule(string moduleId);
