@@ -20,10 +20,10 @@ namespace ComplaintApi.Controllers
         }
 
         [HttpPut("{complainId}")]
-        public IActionResult UpdateCompanyMaster(String complainId,
-           [FromBody] ComplainsMasterForUpdateDto complains)
+        public IActionResult UpdateComplainsMaster(string complainId,
+           [FromBody] ComplainsMasterForUpdateDto complain)
         {
-            if (complains == null)
+            if (complain == null)
             {
                 return BadRequest();
             }
@@ -34,14 +34,14 @@ namespace ComplaintApi.Controllers
                }
                  */
 
-            var ComplainsMasterForUpdateRepo = _complaintRepository.GetCompany(complainId);
+            var ComplainsMasterForUpdateRepo = _complaintRepository.GetComplainsMaster(complainId);
             if (ComplainsMasterForUpdateRepo == null)
             {
                 return NotFound();
             }
 
             //map back to enitiy
-            Mapper.Map(complains, ComplainsMasterForUpdateRepo);
+            Mapper.Map(complain, ComplainsMasterForUpdateRepo);
 
             _complaintRepository.UpdateComplainsMaster(ComplainsMasterForUpdateRepo);
 

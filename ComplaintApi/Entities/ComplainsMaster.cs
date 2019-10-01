@@ -40,5 +40,6 @@ namespace ComplaintApi.Entities
         public string Status { get; set; }
 
         public DateTime UpdatedAt { get; set; }
+        public string ComplainID { get; internal set; }
     }
 }

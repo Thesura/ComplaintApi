@@ -20,20 +20,34 @@ namespace ComplaintApi.Services
             throw new NotImplementedException();
         }
 
+        public bool complainHistoryExists(string historyId, string complainId)
+        {
+            throw new NotImplementedException();
+        }
+
         public CompanyMaster GetCompany(string companyId)
         {
             return _context.CompanyMaster.FirstOrDefault(c => c.CompanyID == companyId);
         }
 
-        public CompanyMaster GetCompanyMaster(string companyId)
-        {
-            return _context.CompanyMaster.FirstOrDefault(c => c.CompanyID == companyId);
-            //throw new NotImplementedException();
-        }
-
-        public ComplainsHistory GetComplainsHistory(string HistoryId)
+        /*public ComplainsHistory GetComplainsHistory(string HistoryId)
         {
             throw new NotImplementedException();
+        }*/
+
+        public ComplainsHistory GetComplainsHistory(string HistoryId, string complainId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object getComplainsHistory(string historyId, string complainId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetComplainsMaster(string complainId)
+        {
+            return _context.ComplainsMaster.FirstOrDefault(c => c.ComplainID == complainId);
         }
 
         public object GetModule(string moduleId)
@@ -108,6 +122,11 @@ namespace ComplaintApi.Services
         }
 
         public void UpdateComplainsMaster(CompanyMaster complainsMasterForUpdateRepo)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void UpdateComplainsMaster(ComplainsMaster complain)
         {
             //throw new NotImplementedException();
         }

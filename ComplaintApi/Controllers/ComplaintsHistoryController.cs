@@ -19,8 +19,18 @@ namespace ComplaintApi.Controllers
             _complaintRepository = complaintRepository;
         }
 
+        [HttpGet("{complainId}", Name = "getcomplainsHistory")]
+        public IActionResult getComplainsHistory(string complainId, string historyId)
+        {
+            var complainsHistoryFromRepo = _complaintRepository.getComplainsHistory(historyId, complainId);
+            
+            var complainHistoryToReturn = Mapper.Map<ComplainsHistoryDto>(complainsHistoryFromRepo);
+
+            return Ok(complainHistoryToReturn);
+        }
+
         [HttpPut("{complainId}")]
-        public IActionResult UpdateComplainsHistory(String HistoryId,
+        public IActionResult UpdateComplainsHistory([FromQuery]String historyId, string complainId,
            [FromBody] ComplainsHistoryForUpdateDto history)
         {
             if (history == null)
@@ -34,20 +44,20 @@ namespace ComplaintApi.Controllers
                }
                  */
 
-            var ComplainsHistoryForUpdateRepo = _complaintRepository.GetComplainsHistory(HistoryId);
+            var ComplainsHistoryForUpdateRepo = _complaintRepository.GetComplainsHistory(historyId, complainId);
             if (ComplainsHistoryForUpdateRepo == null)
             {
                 return NotFound();
             }
 
             //map back to enitiy
-            Mapper.Map(HistoryId, ComplainsHistoryForUpdateRepo);
+            Mapper.Map(history, ComplainsHistoryForUpdateRepo);
 
             _complaintRepository.UpdateComplainsHistory(ComplainsHistoryForUpdateRepo);
 
             if (!_complaintRepository.Save())
             {
-                throw new Exception($"Updating {HistoryId} ComplainHistory fails on save");
+                throw new Exception($"Updating {historyId} ComplainHistory fails on save");
             }
             return NoContent();
         }
