@@ -21,5 +21,16 @@ namespace ComplaintApi.Models
 
         [MaxLength(50)]
         public string Email { get; set; }
+
+        // Patch
+        public String Title { get; set; }
+
+        public String Description { get; set; }
+
+        internal void ApplyTo(CompanyMasterDto companyToPatch)
+        {
+            throw new NotImplementedException();
+        }
     }
+
 }

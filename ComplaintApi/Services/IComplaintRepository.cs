@@ -39,6 +39,9 @@ namespace ComplaintApi.Services
         ComplainsHistory getComplainsHistory(string historyId, string complainId);
 
         bool complainHistoryExists(string historyId, string complainId);
-
+        bool CompanyExists(string companyId);
+        object GetCompanyForMaster(string companyId);
+        void UpdatecompanyForMaster(object companyForMasterFromRepo);
+        bool Save();
     }
 }

@@ -51,6 +51,7 @@ namespace ComplaintApi
                 cfg.CreateMap<UserCompany, UserCompanyDto>();
                 cfg.CreateMap<UserMaster, UserMasterDto>();
                 cfg.CreateMap<UserModule, UserModuleDto>();
+                cfg.CreateMap<CompanyMaster, Models.CompanyMasterDto>();
             });
 
             services.AddScoped<IComplaintRepository, ComplaintRepository>();

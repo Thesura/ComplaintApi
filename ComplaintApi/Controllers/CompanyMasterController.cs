@@ -19,6 +19,8 @@ namespace ComplaintApi.Controllers
             _complaintRepository = complaintRepository;
         }
 
+        public object Id { get; private set; }
+
         [HttpGet("{companyId}", Name = "getCompany")]
         public IActionResult getCompany(string companyId)
         {
@@ -27,6 +29,48 @@ namespace ComplaintApi.Controllers
             var companyToReturn = Mapper.Map<CompanyMasterDto>(companyFromRepo);
 
             return Ok(companyToReturn);
+        }
+        [HttpPatch("{id}")]
+        public IActionResult PartiallyUpdateComapanyMaster(string companyId,
+                    [FromBody] CompanyMasterDto patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                return BadRequest();
+            }
+
+            if (!_complaintRepository.CompanyExists(companyId))
+            {
+                return NotFound();
+            }
+
+            var companyForMasterFromRepo = _complaintRepository.GetCompanyForMaster(companyId);
+
+            if (companyForMasterFromRepo == null)
+            {
+                return NotFound();
+            }
+
+
+            var companyToPatch = Mapper.Map<CompanyMasterDto>(companyForMasterFromRepo);
+            patchDoc.ApplyTo(companyToPatch);
+
+            //add validation
+
+            Mapper.Map(companyToPatch, companyForMasterFromRepo);
+
+            _complaintRepository.UpdatecompanyForMaster(companyForMasterFromRepo);
+
+            if (_complaintRepository.Save())
+            {
+                throw new Exception($"Patching company {Id}  for master failed on save ");
+
+            }
+
+            return NoContent();
+
+
+
         }
     }
 }

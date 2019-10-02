@@ -103,5 +103,25 @@ namespace ComplaintApi.Services
         {
             return _context.UserModule.Any(um => um.EmpID == empId && um.ModuleID == moduleId);
         }
+
+        public bool CompanyExists(string companyId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetCompanyForMaster(string companyId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatecompanyForMaster(object companyForMasterFromRepo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Save()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
