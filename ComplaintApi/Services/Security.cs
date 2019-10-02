@@ -8,7 +8,7 @@ using ComplaintApi.Models;
 
 namespace ComplaintApi.Services
 {
-    public class Security
+    public class Security : ISecurity
     {
         public string hash(string password,byte[] salt)
         {
@@ -22,14 +22,6 @@ namespace ComplaintApi.Services
             return hashed;
         }
 
-        public string hashNewPassword(string password)
-        {
-            byte[] salt = new byte[128 / 8];
-            var randomNumber = RandomNumberGenerator.Create();
-            randomNumber.GetBytes(salt);
-
-            return hash(password, salt);
-        }
 
         public bool authenticate(UserMasterDto user, string username, string password)
         {

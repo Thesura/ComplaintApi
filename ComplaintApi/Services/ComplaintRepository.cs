@@ -108,5 +108,30 @@ namespace ComplaintApi.Services
         {
             return _context.UserMaster.Where(u => u.Name == name).FirstOrDefault();
         }
+
+        public void addCompany(CompanyMaster company)
+        {
+            _context.CompanyMaster.Add(company);
+        }
+
+        public void addUser(UserMaster user)
+        {
+            _context.UserMaster.Add(user);
+        }
+
+        public void addModule(ModuleMaster module)
+        {
+            _context.ModuleMaster.Add(module);
+        }
+
+        public void addPriority(PriorityMaster priority)
+        {
+            _context.PriorityMaster.Add(priority);
+        }
+
+        public bool save()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
     }
 }

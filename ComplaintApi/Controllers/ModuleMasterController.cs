@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ComplaintApi.Entities;
 using ComplaintApi.Models;
 using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,7 @@ namespace ComplaintApi.Controllers
             _complaintRepository = complaintRepository;
         }
 
-        [HttpGet("{moduleId}", Name = "getModule")]
+        [HttpGet("{moduleId}", Name = "GetModule")]
         public IActionResult getModule(string moduleId)
         {
             if (!_complaintRepository.moduleExists(moduleId))
@@ -34,5 +35,28 @@ namespace ComplaintApi.Controllers
             return Ok(moduleToReturn);
         }
 
+        [HttpPost]
+        public IActionResult createModule([FromBody] ModuleMasterForCreationDto module)
+        {
+            if (module == null)
+            {
+                return BadRequest();
+            }
+
+            var moduleEntity = Mapper.Map<ModuleMaster>(module);
+
+            _complaintRepository.addModule(moduleEntity);
+
+            if (!_complaintRepository.save())
+            {
+                throw new Exception("Creation failed at save()");
+            }
+
+            var moduleToReturn = Mapper.Map<ModuleMasterDto>(moduleEntity);
+
+            moduleToReturn.ModuleID = moduleEntity.ModuleID;
+
+            return CreatedAtRoute("GetModule", new { moduleId = moduleEntity.ModuleID }, moduleToReturn);
+        }
     }
 }

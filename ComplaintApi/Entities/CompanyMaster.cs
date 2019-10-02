@@ -13,7 +13,6 @@ namespace ComplaintApi.Entities
         public string COMPCODE { get; set; }
 
         [Key]
-        [Required]
         [MaxLength(100)]
         public string CompanyID { get; set; }
 

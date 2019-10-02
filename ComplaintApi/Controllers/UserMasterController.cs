@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using ComplaintApi.Entities;
 using ComplaintApi.Models;
 using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace ComplaintApi.Controllers
@@ -21,7 +23,7 @@ namespace ComplaintApi.Controllers
             _security = security;
         }
 
-        [HttpGet("{empId}", Name = "getUser")]
+        [HttpGet("{empId}", Name = "GetUser")]
         public IActionResult getUser(string empId)
         {
             if (!_complaintRepository.userExists(empId))
@@ -36,8 +38,40 @@ namespace ComplaintApi.Controllers
             return Ok(userToReturn);
         }
 
-        [Route("login")]
-        [HttpGet(Name = "login")]
+        [HttpPost]
+        public IActionResult createUser([FromBody] UserMasterForCreationDto user)
+        {
+            if(user == null)
+            {
+                return BadRequest();
+            }
+
+            byte[] salt = new byte[128 / 8];
+            var randomNumber = RandomNumberGenerator.Create();
+            randomNumber.GetBytes(salt);
+
+            
+            user.Password = _security.hash(user.Password, salt);
+
+            var userEntity = Mapper.Map<UserMaster>(user);
+
+            userEntity.Salt = salt;
+
+            _complaintRepository.addUser(userEntity);
+
+            if (!_complaintRepository.save())
+            {
+                throw new Exception("Creation failed at save()");
+            }
+
+            var userToReturn = Mapper.Map<UserMasterDto>(userEntity);
+
+            return CreatedAtRoute("GetUser", new { EmpId = userToReturn.EmpID }, userToReturn);
+            //return Ok();
+        }
+
+
+        /*[Route("api/usermaster/login")]
         public IActionResult userLogin([FromQuery] string userName, string password)
         {
             var userFromRepo = _complaintRepository.getUserForAuthentication(userName);
@@ -49,6 +83,6 @@ namespace ComplaintApi.Controllers
                 return Ok();
             }
             else return StatusCode(401);
-        }
+        }*/
     }
 }

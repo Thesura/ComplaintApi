@@ -10,9 +10,13 @@ namespace ComplaintApi.Services
     {
         CompanyMaster GetCompany(string companyId);
 
+        void addCompany(CompanyMaster company);
+
         bool companyExists(string companyId);
 
         UserMaster getUser(string empId);
+
+        void addUser(UserMaster user);
 
         UserMaster getUserForAuthentication(string name);
 
@@ -20,9 +24,13 @@ namespace ComplaintApi.Services
 
         ModuleMaster getModule(string moduleId);
 
+        void addModule(ModuleMaster module);
+
         bool moduleExists(string moduleId);
 
         PriorityMaster getPriority(string priorityId);
+
+        void addPriority(PriorityMaster priority);
 
         bool priorityExists(string priorityId);
 
@@ -41,6 +49,8 @@ namespace ComplaintApi.Services
         ComplainsHistory getComplainsHistory(string historyId, string complainId);
 
         bool complainHistoryExists(string historyId, string complainId);
+
+        bool save();
 
     }
 }

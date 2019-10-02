@@ -51,9 +51,18 @@ namespace ComplaintApi
                 cfg.CreateMap<UserCompany, UserCompanyDto>();
                 cfg.CreateMap<UserMaster, UserMasterDto>();
                 cfg.CreateMap<UserModule, UserModuleDto>();
+                cfg.CreateMap<UserMasterForCreationDto, UserMaster>();
+                cfg.CreateMap<PriorityMasterForCreationDto, PriorityMaster>();
+                cfg.CreateMap<ModuleMasterForCreationDto, ModuleMaster>();
+                cfg.CreateMap<CompanyMasterForCreationDto, CompanyMaster>()
+                .ForMember(dest => dest.COMPCODE, opt => opt.MapFrom(src => src.COMPCODE))
+                .ForMember(dest => dest.CompanyName, opt => opt.MapFrom(src => src.CompanyName))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
+
             });
 
             services.AddScoped<IComplaintRepository, ComplaintRepository>();
+            services.AddScoped<Security, Security>();
 
             services.AddSwaggerGen(c =>
             {
