@@ -58,7 +58,7 @@ namespace ComplaintApi.Controllers
 
 			return NoContent();
 		}
-	}
+	
 
         [HttpPost]
         public IActionResult createUser([FromBody] UserMasterForCreationDto user)

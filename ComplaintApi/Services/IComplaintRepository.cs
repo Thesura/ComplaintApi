@@ -63,15 +63,14 @@ namespace ComplaintApi.Services
         void DeleteComplainHistory(ComplainsHistory complainsHistory);
 
         bool Save();
-		bool CompanyExists(object companyId);
+        bool save();
+        bool CompanyExists(object companyId);
 		bool ModuleExists(object moduleId);
 		bool PriorityExists(object priorityId);
 		bool UserExists(object empId);
 
 
-	}
-
-        bool save();
+	
 
     }
 

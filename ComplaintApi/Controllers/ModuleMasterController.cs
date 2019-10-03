@@ -55,7 +55,7 @@ namespace ComplaintApi.Controllers
 
 			return NoContent();
 		}
-	}
+	
 
         [HttpPost]
         public IActionResult createModule([FromBody] ModuleMasterForCreationDto module)

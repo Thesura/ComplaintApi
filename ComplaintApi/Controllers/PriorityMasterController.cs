@@ -55,7 +55,6 @@ namespace ComplaintApi.Controllers
 
 			return NoContent();
 		}
-	}
 
         [HttpPost]
         public IActionResult createPriority([FromBody] PriorityMasterForCreationDto priority)
@@ -76,10 +75,12 @@ namespace ComplaintApi.Controllers
 
             var priorityToReturn = Mapper.Map<PriorityMasterDto>(priorityEntity);
 
-            
+
 
             return CreatedAtRoute("GetPriority", new { priorityId = priorityEntity.PriorityID }, priorityToReturn);
         }
     }
 
 }
+
+       

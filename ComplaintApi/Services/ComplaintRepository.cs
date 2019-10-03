@@ -108,68 +108,62 @@ namespace ComplaintApi.Services
 
 
 
-		public bool Save()
-		{
-			return (_context.SaveChanges() >= 0);
-		}
-
-
-		//methods for delete requests
-
-		public bool CompanyExists(object companyId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void DeleteCompany(CompanyMaster companyMaster)
-		{
-			_context.CompanyMaster.Remove(companyMaster);
-		}
-
-		public void DeleteModule(ModuleMaster moduleMaster)
-		{
-			_context.ModuleMaster.Remove(moduleMaster);
-		}
-
-		public bool ModuleExists(object moduleId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void DeletePriority(PriorityMaster priorityMaster)
-		{
-			_context.PriorityMaster.Remove(priorityMaster);
-		}
-
-		public bool PriorityExists(object priorityId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void DeleteUser(UserMaster userMaster)
-		{
-			_context.UserMaster.Remove(userMaster);
-		}
-
-		public bool UserExists(object empId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void DeleteUserCompany(UserCompany userCompany)
-		{
-			_context.UserCompany.Remove(userCompany);
-		}
-
-		public void DeleteUserModule(UserModule userModule)
-		{
-			_context.UserModule.Remove(userModule);
-		}
-
-        public bool complainExists(string complainId)
+        public bool Save()
         {
-            return _context.ComplainsMaster.Any
-                (cm => cm.ComplainID == complainId);
+            return (_context.SaveChanges() >= 0);
+        }
+
+
+        //methods for delete requests
+
+        public bool CompanyExists(object companyId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCompany(CompanyMaster companyMaster)
+        {
+            _context.CompanyMaster.Remove(companyMaster);
+        }
+
+        public void DeleteModule(ModuleMaster moduleMaster)
+        {
+            _context.ModuleMaster.Remove(moduleMaster);
+        }
+
+        public bool ModuleExists(object moduleId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeletePriority(PriorityMaster priorityMaster)
+        {
+            _context.PriorityMaster.Remove(priorityMaster);
+        }
+
+        public bool PriorityExists(object priorityId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteUser(UserMaster userMaster)
+        {
+            _context.UserMaster.Remove(userMaster);
+        }
+
+        public bool UserExists(object empId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteUserCompany(UserCompany userCompany)
+        {
+            _context.UserCompany.Remove(userCompany);
+        }
+
+        public void DeleteUserModule(UserModule userModule)
+        {
+            _context.UserModule.Remove(userModule);
         }
 
         public void DeleteComplain(ComplainsMaster complainsMaster)
@@ -180,6 +174,8 @@ namespace ComplaintApi.Services
         public void DeleteComplainHistory(ComplainsHistory complainsHistory)
         {
             _context.ComplainsHistory.Remove(complainsHistory);
+
+        }
 
         public UserMaster getUserForAuthentication(string name)
         {
@@ -211,5 +207,7 @@ namespace ComplaintApi.Services
             return (_context.SaveChanges() >= 0);
 
         }
+
+        
     }
 }

@@ -55,12 +55,10 @@ namespace ComplaintApi.Controllers
 
 			return NoContent();
 		}
-	}
-
         [HttpPost]
         public IActionResult createCompany([FromBody] CompanyMasterForCreationDto company)
         {
-            if(company == null)
+            if (company == null)
             {
                 return BadRequest();
             }
@@ -81,5 +79,8 @@ namespace ComplaintApi.Controllers
             return CreatedAtRoute("GetCompany", new { companyId = companyEntity.CompanyID }, companyToReturn);
         }
     }
-
 }
+
+      
+
+
