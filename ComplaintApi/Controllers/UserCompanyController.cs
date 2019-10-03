@@ -33,5 +33,17 @@ namespace ComplaintApi.Controllers
 
             return Ok(userCompanyToReturn);
         }
+
+
+        /*[HttpGet()]
+        public IActionResult GetAllUserCompanies()
+        {
+            var userCompanyRepo = _complaintRepository.getAllUserCompany();
+
+            var userCompanies = Mapper.Map<IEnumerable<UserCompanyDto>>(userCompanyRepo);
+
+            return new JsonResult(userCompanies);
+
+        }*/
     }
 }

@@ -34,5 +34,17 @@ namespace ComplaintApi.Controllers
 
             return Ok(complainHistoryToReturn);
         }
+
+        /*[HttpGet()]
+        public IActionResult getAllComplainsHistories()
+        {
+            var companyFromRepo = _complaintRepository.getComplainHistories();
+
+            var companies = Mapper.Map<IEnumerable<ComplainsHistoryDto>>(companyFromRepo);
+
+            return new JsonResult(companies);
+        }
+        */
+
     }
 }

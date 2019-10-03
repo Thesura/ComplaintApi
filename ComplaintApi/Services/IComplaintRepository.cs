@@ -40,14 +40,21 @@ namespace ComplaintApi.Services
 
         ComplainsHistory getComplainsHistory(string historyId, string complainId);
         IEnumerable<UserMaster> getUsers();
+       
         bool complainHistoryExists(string historyId, string complainId);
-
+        
         IEnumerable<PriorityMaster> getPriorities();
         
 
         IEnumerable<ComplainsMaster> getAllComplains();
 
+        IEnumerable<UserCompany> getAllUserCompany();
 
+        IEnumerable<ModuleMaster> getAllModules();
         /*IEnumerable<ComplainsHistory> getComplainHistories();*/
+
+        //void UpdateCompany(CompanyMaster company);
+        void UpdateCompany(IEnumerable<CompanyMaster> companyFromRepo);
+        bool Save();
     }
 }

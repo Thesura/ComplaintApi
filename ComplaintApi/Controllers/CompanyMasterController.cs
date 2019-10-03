@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ComplaintApi.Models;
 using ComplaintApi.Services;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,43 @@ namespace ComplaintApi.Controllers
 
             return new JsonResult(companies);
 
+        }
+        [HttpPatch("{id}")]
+        public IActionResult PartiallyUpdateCompanyMaster(String id,
+            [FromBody] JsonPatchDocument<CompanyMasterDto> patchDoc)
+        {
+            if(patchDoc == null)
+            {
+                return BadRequest();
+            }
+
+            if(!_complaintRepository.companyExists(id))
+            {
+                return NotFound();
+            }
+
+            var companyFromRepo = _complaintRepository.GetCompanyMasters();
+
+            if(companyFromRepo == null)
+            {
+                return NotFound();
+            }
+
+
+            var companyMasterToPatch = Mapper.Map<CompanyMasterDto>(companyFromRepo);
+
+            patchDoc.ApplyTo(companyMasterToPatch);
+
+            Mapper.Map(companyMasterToPatch, companyFromRepo);
+
+            _complaintRepository.UpdateCompany(companyFromRepo);
+
+            if(!_complaintRepository.Save())
+            {
+                throw new Exception($"Patching company {id} failed on save");
+            }
+
+            return NoContent();
         }
     }
 }

@@ -41,6 +41,16 @@ namespace ComplaintApi.Services
             return _context.ComplainsMaster.ToList();
         }
 
+        public IEnumerable<UserCompany> getAllUserCompany()
+        {
+            return _context.UserCompany.ToList();
+        }
+
+        public IEnumerable<ModuleMaster> getAllModules()
+        {
+            return _context.ModuleMaster.ToList();
+        }
+
         /*public IEnumerable<ComplainsHistory> getComplainHistories ()
         {
             return _context.ComplainsHistory.ToList();
@@ -128,7 +138,17 @@ namespace ComplaintApi.Services
             return _context.UserModule.Any(um => um.EmpID == empId && um.ModuleID == moduleId);
         }
 
-       
+        public void UpdateCompany(IEnumerable<CompanyMaster> companyFromRepo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Save()
+        {
+            throw new NotImplementedException();
+        }
+
+
 
 
 
