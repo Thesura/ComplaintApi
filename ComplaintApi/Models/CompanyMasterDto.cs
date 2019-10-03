@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using ComplaintApi.Controllers;
 
 namespace ComplaintApi.Models
 {
@@ -28,6 +29,11 @@ namespace ComplaintApi.Models
         public String Description { get; set; }
 
         internal void ApplyTo(CompanyMasterDto companyToPatch)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void ApplyTo(CompanyForUpdateDto companyMasterDto)
         {
             throw new NotImplementedException();
         }

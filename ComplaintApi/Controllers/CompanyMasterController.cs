@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ComplaintApi.Entities;
 using ComplaintApi.Models;
 using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ namespace ComplaintApi.Controllers
     public class CompanyMasterController : Controller
     {
         private IComplaintRepository _complaintRepository;
+        private object companyToReturn;
 
         public CompanyMasterController(IComplaintRepository complaintRepository)
         {
@@ -20,6 +22,9 @@ namespace ComplaintApi.Controllers
         }
 
         public object Id { get; private set; }
+        public object CompanyMasterAdd { get; private set; }
+        public object CompanyMasterToAdd { get; private set; }
+        public object CompanyId { get; private set; }
 
         [HttpGet("{companyId}", Name = "getCompany")]
         public IActionResult getCompany(string companyId)
@@ -48,7 +53,24 @@ namespace ComplaintApi.Controllers
 
             if (companyForMasterFromRepo == null)
             {
-                return NotFound();
+                var CompanyMasterDto = new CompanyForUpdateDto();
+                patchDoc.ApplyTo(CompanyMasterDto);
+
+                var CompanymMasterAdd = Mapper.Map<CompanyMaster>(CompanyMasterDto);
+                CompanymMasterAdd.Id = Id;
+
+                _complaintRepository.AddCompanyForMaster(companyId, CompanyMasterAdd);
+
+                if (!_complaintRepository.Save())
+                {
+                    throw new Exception($"Upserting company {Id} for master failed on save");
+                }
+
+                var CompanyToReturn = Mapper.Map<CompanyMaster>(CompanyMasterToAdd);
+                return CreatedAtRoute("GetCompanyForMaster",
+                    new { CompanyId = CompanyId, id = CompanyToReturn.Id },
+                    CompanyToReturn);
+
             }
 
 

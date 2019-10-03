@@ -123,5 +123,10 @@ namespace ComplaintApi.Services
         {
             throw new NotImplementedException();
         }
+
+        public void AddCompanyForMaster(string companyId, object companyMasterAdd)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
