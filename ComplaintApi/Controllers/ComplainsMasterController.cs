@@ -24,6 +24,7 @@ namespace ComplaintApi.Controllers
         [HttpGet("{complainId}", Name = "getComplain")]
         public IActionResult getComplain(string complainId)
         {
+
             if(!_complaintRepository.complainExists(complainId))
             {
                 return NotFound();
@@ -34,6 +35,26 @@ namespace ComplaintApi.Controllers
             var complainToReturn = Mapper.Map<ComplainsMasterDto>(complainFromRepo);
 
             return Ok(complainToReturn);
+        }
+
+        [HttpDelete("{complainId}")]
+
+        public IActionResult deleteComplain(String complainId)
+        {
+            var complainFromRepo = _complaintRepository.getComplain(complainId);
+
+            if (complainFromRepo == null)
+            {
+                return NotFound();
+            }
+            _complaintRepository.DeleteComplain(complainFromRepo);
+
+            if (!_complaintRepository.Save())
+            {
+                throw new Exception($"Delete a Complain {complainId} failed");
+            }
+
+            return NoContent();
         }
     }
 }

@@ -50,7 +50,29 @@ namespace ComplaintApi.Services
 
         bool complainHistoryExists(string historyId, string complainId);
 
+
+		// Delete request
+
+		void DeleteCompany(CompanyMaster companyMaster);
+		void DeleteModule(ModuleMaster moduleMaster);
+		void DeletePriority(PriorityMaster priorityMaster);
+		void DeleteUser(UserMaster userMaster);
+		void DeleteUserCompany(UserCompany userCompany);
+		void DeleteUserModule(UserModule userModule);
+        void DeleteComplain(ComplainsMaster complainsMaster);
+        void DeleteComplainHistory(ComplainsHistory complainsHistory);
+
+        bool Save();
+		bool CompanyExists(object companyId);
+		bool ModuleExists(object moduleId);
+		bool PriorityExists(object priorityId);
+		bool UserExists(object empId);
+
+
+	}
+
         bool save();
 
     }
+
 }

@@ -34,5 +34,24 @@ namespace ComplaintApi.Controllers
 
             return Ok(complainHistoryToReturn);
         }
+        [HttpDelete("{complainId}")]
+
+        public IActionResult deleteComplainHistory([FromQuery] string historyId, string complainId)
+        {
+            var complainhistoryFromRepo = _complaintRepository.getComplainsHistory(historyId, complainId);
+
+            if (complainhistoryFromRepo == null)
+            {
+                return NotFound();
+            }
+            _complaintRepository.DeleteComplainHistory(complainhistoryFromRepo);
+
+            if (!_complaintRepository.Save())
+            {
+                throw new Exception($"Delete a Complain {complainId} and history ID {historyId} failed");
+            }
+
+            return NoContent();
+        }
     }
 }
