@@ -48,12 +48,16 @@ namespace ComplaintApi
                 cfg.CreateMap<ModuleMaster, ModuleMasterDto>();
                 cfg.CreateMap<PriorityMaster, PriorityMasterDto>();
                 cfg.CreateMap<ComplainsMaster, ComplainsMasterDto>();
+                cfg.CreateMap<ComplainsHistory, ComplainsHistoryDto>();
                 cfg.CreateMap<Models.CompanyMasterForUpdateDto, Entities.CompanyMaster>();
                 cfg.CreateMap<Models.ModuleMasterForUpdateDto, Entities.ModuleMaster>();
                 cfg.CreateMap<Models.PriorityMasterForUpdateDto, Entities.PriorityMaster>();
                 cfg.CreateMap<Models.UserMasterForUpdateDto, Entities.UserMaster>();
                 cfg.CreateMap<Models.ComplainsHistoryForUpdateDto,Entities.ComplainsMaster>();
                 cfg.CreateMap<Models.ComplainsMasterForUpdateDto,Entities.ComplainsMaster>();
+                cfg.CreateMap<Models.ComplainsHistoryForUpdateDto, Entities.ComplainsHistory>();
+                cfg.CreateMap<Models.ComplainsHistoryForCreationDto, Entities.ComplainsHistory>();
+
             });
 
             services.AddScoped<IComplaintRepository, ComplaintRepository>();

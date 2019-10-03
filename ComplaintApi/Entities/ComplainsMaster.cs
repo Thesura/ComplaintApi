@@ -9,6 +9,11 @@ namespace ComplaintApi.Entities
 {
     public class ComplainsMaster
     {
+        [Key]
+        [Required]
+        [MaxLength(50)]
+        public string ComplainID { get; set; }
+
         [Required]
         [MaxLength(100)]
         public string COMPCODE { get; set; }
@@ -40,6 +45,5 @@ namespace ComplaintApi.Entities
         public string Status { get; set; }
 
         public DateTime UpdatedAt { get; set; }
-        public string ComplainID { get; internal set; }
     }
 }

@@ -20,29 +20,14 @@ namespace ComplaintApi.Services
             throw new NotImplementedException();
         }
 
-        public bool complainHistoryExists(string historyId, string complainId)
-        {
-            throw new NotImplementedException();
-        }
-
         public CompanyMaster GetCompany(string companyId)
         {
             return _context.CompanyMaster.FirstOrDefault(c => c.CompanyID == companyId);
         }
 
-        /*public ComplainsHistory GetComplainsHistory(string HistoryId)
+        public ComplainsMaster GetComplain(string complainId)
         {
-            throw new NotImplementedException();
-        }*/
-
-        public ComplainsHistory GetComplainsHistory(string HistoryId, string complainId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object getComplainsHistory(string historyId, string complainId)
-        {
-            throw new NotImplementedException();
+            return _context.ComplainsMaster.FirstOrDefault(c => c.ComplainID == complainId);
         }
 
         public object GetComplainsMaster(string complainId)
@@ -80,12 +65,22 @@ namespace ComplaintApi.Services
             return _context.UserMaster.FirstOrDefault(c => c.EmpID == empId);
         }
 
+        public ComplainsHistory GetComplainsHistory(string historyId)
+        {
+            return _context.ComplainsHistory.FirstOrDefault(c => c.HistoryID == historyId); ;
+        }
+
         public bool HistoryExist(string HistoryID)
         {
             throw new NotImplementedException();
         }
 
         public bool ModuleExist(string ModuleID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ComplainExist(string ComplainID)
         {
             throw new NotImplementedException();
         }
@@ -98,7 +93,6 @@ namespace ComplaintApi.Services
         public bool Save()
         {
             return (_context.SaveChanges() >= 0);
-            //throw new NotImplementedException();
         }
 
         public void UpdateCompanyMaster(CompanyMaster company)
@@ -111,39 +105,20 @@ namespace ComplaintApi.Services
             //throw new NotImplementedException();
         }
 
-        public void UpdateComplainHistory(ComplainsHistory history)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public void UpdateComplainsMaster(CompanyMaster complainsMasterForUpdateRepo)
-        {
-            //throw new NotImplementedException();
-        }
-
         public void UpdateComplainsMaster(ComplainsMaster complain)
-        {
-            //throw new NotImplementedException();
+        {   
         }
 
         public void UpdateModuleMaster(ModuleMaster module)
-        {
-           
+        {    
         }
 
         public void UpdatePriorityMaster(PriorityMaster priority)
-        {
-           
+        {   
         }
 
         public void UpdateUserMaster(UserMaster user)
-        {
-            
+        {    
         }
 
         public bool UserExist(string EmpID)
@@ -151,6 +126,43 @@ namespace ComplaintApi.Services
             throw new NotImplementedException();
         }
 
-        
+        public void UpdateComplainsMaster(object complainsMasterForUpdateRepo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void complainsHistoryExist(string HistoryID)
+        {
+        }
+
+        public void UpdateComplainsHistory(ComplainsHistory complain)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateComplainsHistory(object complainsHistoryForUpdateRepo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ComplainHistoryExist(string HistoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ComplainsHistory GetComplainsHistory(string historyId, string complainId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool complainsHistoryExist(string HistoryID, string ComplainID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void addComplainsHistory(ComplainsHistory complainshistoryEntity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

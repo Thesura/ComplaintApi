@@ -15,41 +15,42 @@ namespace ComplaintApi.Services
 
         bool CompanyExist(string CompanyID);
 
+        bool ComplainHistoryExist(string HistoryId);
+
         void UpdateCompanyMaster(CompanyMaster company);
 
         bool Save();
         
-        ComplainsHistory GetComplainsHistory(string HistoryId, string complainId);
-
         bool HistoryExist(string HistoryID);
 
         object GetModule(string moduleId);
         PriorityMaster GetPriority(string priorityId);
 
         //ComplainsHistory Repo
-        void UpdateComplainHistory(ComplainsHistory history);
-        void UpdateComplainsHistory(ComplainsHistory complainsHistoryForUpdateRepo);
-
+        ComplainsHistory GetComplainsHistory(string historyId,string complainId);
+        bool complainsHistoryExist(string HistoryID,string ComplainID);
+        void UpdateComplainsHistory(ComplainsHistory complain);
+        
         //modulemaster Repo
         ModuleMaster GetModuleMaster(string moduleId);
-        bool complainHistoryExists(string historyId, string complainId);
         bool ModuleExist(string ModuleID);
         void UpdateModuleMaster(ModuleMaster module);
-
-        object getComplainsHistory(string historyId, string complainId);
         
         //priorityMaster Repo
         PriorityMaster GetPriorityMaster(string priorityId);
         bool PriorityExist(string PriorityID);
         void UpdatePriorityMaster(PriorityMaster priority);
-        void UpdateComplainsMaster(object complainsMasterForUpdateRepo);
-
+        
         //ComplainsMaster Repo
         object GetComplainsMaster(string complainId);
         void UpdateComplainsMaster(ComplainsMaster complain);
+        void UpdateComplainsMaster(object complainsMasterForUpdateRepo);
+
+        void UpdateComplainsHistory(object complainsHistoryForUpdateRepo);
 
         //usermaster Repo
         UserMaster GetUser(string empId);
-        void UpdateUserMaster(UserMaster user); 
+        void UpdateUserMaster(UserMaster user);
+        void addComplainsHistory(ComplainsHistory complainshistoryEntity);
     }
 }
