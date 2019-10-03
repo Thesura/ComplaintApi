@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ComplaintApi.Entities;
 using ComplaintApi.Models;
 using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,7 @@ namespace ComplaintApi.Controllers
             _complaintRepository = complaintRepository;
         }
 
-        [HttpGet("{companyId}", Name = "getCompany")]
+        [HttpGet("{companyId}", Name = "GetCompany")]
         public IActionResult getCompany(string companyId)
         {
             if (!_complaintRepository.companyExists(companyId))
@@ -33,6 +34,7 @@ namespace ComplaintApi.Controllers
 
             return Ok(companyToReturn);
         }
+
 
 		[HttpDelete("{companyId}")]
 
@@ -54,4 +56,30 @@ namespace ComplaintApi.Controllers
 			return NoContent();
 		}
 	}
+
+        [HttpPost]
+        public IActionResult createCompany([FromBody] CompanyMasterForCreationDto company)
+        {
+            if(company == null)
+            {
+                return BadRequest();
+            }
+
+            var companyEntity = Mapper.Map<CompanyMaster>(company);
+
+            _complaintRepository.addCompany(companyEntity);
+
+            if (!_complaintRepository.save())
+            {
+                throw new Exception("Creation failed at save()");
+            }
+
+            var companyToReturn = Mapper.Map<CompanyMasterDto>(companyEntity);
+
+            companyToReturn.CompanyID = companyEntity.CompanyID;
+
+            return CreatedAtRoute("GetCompany", new { companyId = companyEntity.CompanyID }, companyToReturn);
+        }
+    }
+
 }

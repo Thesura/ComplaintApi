@@ -26,5 +26,7 @@ namespace ComplaintApi.Models
         public string Password { get; set; }
 
         public int IsAdmin { get; set; }
+
+        public byte[] Salt { get; set; }
     }
 }

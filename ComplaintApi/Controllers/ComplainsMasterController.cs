@@ -24,7 +24,8 @@ namespace ComplaintApi.Controllers
         [HttpGet("{complainId}", Name = "getComplain")]
         public IActionResult getComplain(string complainId)
         {
-            if (!_complaintRepository.complainExists(complainId))
+
+            if(!_complaintRepository.complainExists(complainId))
             {
                 return NotFound();
             }

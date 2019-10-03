@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ComplaintApi.Entities;
 using ComplaintApi.Models;
 using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,7 @@ namespace ComplaintApi.Controllers
             _complaintRepository = complaintRepository;
         }
 
-        [HttpGet("priorityId", Name = "getPriority")]
+        [HttpGet("priorityId", Name = "GetPriority")]
         public IActionResult getPriority(string priorityId)
         {
             if (!_complaintRepository.priorityExists(priorityId))
@@ -33,6 +34,7 @@ namespace ComplaintApi.Controllers
 
             return Ok(priorityToReturn);
         }
+
 
 		[HttpDelete("{priorityId}")]
 
@@ -54,4 +56,30 @@ namespace ComplaintApi.Controllers
 			return NoContent();
 		}
 	}
+
+        [HttpPost]
+        public IActionResult createPriority([FromBody] PriorityMasterForCreationDto priority)
+        {
+            if (priority == null)
+            {
+                return BadRequest();
+            }
+
+            var priorityEntity = Mapper.Map<PriorityMaster>(priority);
+
+            _complaintRepository.addPriority(priorityEntity);
+
+            if (!_complaintRepository.save())
+            {
+                throw new Exception("Creation failed at save()");
+            }
+
+            var priorityToReturn = Mapper.Map<PriorityMasterDto>(priorityEntity);
+
+            
+
+            return CreatedAtRoute("GetPriority", new { priorityId = priorityEntity.PriorityID }, priorityToReturn);
+        }
+    }
+
 }

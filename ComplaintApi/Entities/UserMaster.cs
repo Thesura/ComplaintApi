@@ -28,5 +28,7 @@ namespace ComplaintApi.Entities
 
         public int IsAdmin { get; set; }
 
+        public byte[] Salt { get; set; }
+
     }
 }

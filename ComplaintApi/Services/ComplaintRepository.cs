@@ -69,6 +69,13 @@ namespace ComplaintApi.Services
         }
 
 
+        public bool complainExists(string complainId)
+        {
+            return _context.ComplainsMaster.Any
+                (cm => cm.ComplainID == complainId);
+        }
+
+
         public bool complainHistoryExists(string historyId, string complainId)
         {
             return _context.ComplainsHistory.Any(ch => ch.HistoryID == historyId && ch.ComplainID == complainId);
@@ -98,6 +105,7 @@ namespace ComplaintApi.Services
         {
             return _context.UserModule.Any(um => um.EmpID == empId && um.ModuleID == moduleId);
         }
+
 
 
 		public bool Save()
@@ -172,6 +180,36 @@ namespace ComplaintApi.Services
         public void DeleteComplainHistory(ComplainsHistory complainsHistory)
         {
             _context.ComplainsHistory.Remove(complainsHistory);
+
+        public UserMaster getUserForAuthentication(string name)
+        {
+            return _context.UserMaster.Where(u => u.Name == name).FirstOrDefault();
+        }
+
+        public void addCompany(CompanyMaster company)
+        {
+            _context.CompanyMaster.Add(company);
+        }
+
+        public void addUser(UserMaster user)
+        {
+            _context.UserMaster.Add(user);
+        }
+
+        public void addModule(ModuleMaster module)
+        {
+            _context.ModuleMaster.Add(module);
+        }
+
+        public void addPriority(PriorityMaster priority)
+        {
+            _context.PriorityMaster.Add(priority);
+        }
+
+        public bool save()
+        {
+            return (_context.SaveChanges() >= 0);
+
         }
     }
 }

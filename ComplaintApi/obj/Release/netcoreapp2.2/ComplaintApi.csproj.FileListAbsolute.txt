@@ -1,0 +1,14 @@
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\bin\Release\netcoreapp2.2\ComplaintApi.deps.json
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\bin\Release\netcoreapp2.2\ComplaintApi.runtimeconfig.json
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\bin\Release\netcoreapp2.2\ComplaintApi.runtimeconfig.dev.json
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\bin\Release\netcoreapp2.2\ComplaintApi.dll
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\bin\Release\netcoreapp2.2\ComplaintApi.pdb
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\obj\Release\netcoreapp2.2\ComplaintApi.csprojAssemblyReference.cache
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\obj\Release\netcoreapp2.2\ComplaintApi.csproj.CoreCompileInputs.cache
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\obj\Release\netcoreapp2.2\ComplaintApi.RazorAssemblyInfo.cache
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\obj\Release\netcoreapp2.2\ComplaintApi.RazorAssemblyInfo.cs
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\obj\Release\netcoreapp2.2\ComplaintApi.AssemblyInfoInputs.cache
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\obj\Release\netcoreapp2.2\ComplaintApi.AssemblyInfo.cs
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\obj\Release\netcoreapp2.2\ComplaintApi.RazorTargetAssemblyInfo.cache
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\obj\Release\netcoreapp2.2\ComplaintApi.dll
+C:\Users\TJMS\Documents\GitHub\ComplaintApi\ComplaintApi\obj\Release\netcoreapp2.2\ComplaintApi.pdb
