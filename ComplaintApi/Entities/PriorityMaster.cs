@@ -19,5 +19,8 @@ namespace ComplaintApi.Entities
 
         [MaxLength(100)]
         public string Description { get; set; }
+
+        public ICollection<ComplainsMaster> ComplainsMasters { get; set; }
+            = new List<ComplainsMaster>();
     }
 }

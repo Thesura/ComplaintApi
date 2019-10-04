@@ -45,5 +45,6 @@ namespace ComplaintApi.Entities
         public string Status { get; set; }
 
         public DateTime UpdatedAt { get; set; }
+
     }
 }

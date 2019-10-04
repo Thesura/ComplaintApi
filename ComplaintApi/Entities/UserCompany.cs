@@ -22,5 +22,7 @@ namespace ComplaintApi.Entities
         [Required]
         [MaxLength(100)]
         public string CompanyID { get; set; }
+
+        
     }
 }

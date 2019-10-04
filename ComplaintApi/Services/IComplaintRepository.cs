@@ -69,8 +69,9 @@ namespace ComplaintApi.Services
 		bool PriorityExists(object priorityId);
 		bool UserExists(object empId);
 
+        void addComplaint(ComplainsMaster  complainsMaster);
 
-	
+
 
     }
 

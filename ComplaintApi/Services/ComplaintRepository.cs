@@ -208,6 +208,13 @@ namespace ComplaintApi.Services
 
         }
 
-        
+        public void addComplaint(ComplainsMaster complainsMaster)
+        {
+
+            _context.ComplainsMaster.Add(complainsMaster);
+
+        }
+
+       
     }
 }

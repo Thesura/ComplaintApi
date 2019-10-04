@@ -58,6 +58,7 @@ namespace ComplaintApi
                 .ForMember(dest => dest.COMPCODE, opt => opt.MapFrom(src => src.COMPCODE))
                 .ForMember(dest => dest.CompanyName, opt => opt.MapFrom(src => src.CompanyName))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
+                cfg.CreateMap<Models.ComplaintsMasterForCreationDto, Entities.ComplainsMaster>();
 
             });
 

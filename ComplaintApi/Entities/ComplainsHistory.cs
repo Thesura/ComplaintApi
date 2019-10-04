@@ -32,5 +32,6 @@ namespace ComplaintApi.Entities
 
         [MaxLength(100)]
         public string UpdatedBy { get; set; }
+
     }
 }

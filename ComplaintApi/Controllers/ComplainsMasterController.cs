@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using ComplaintApi.Entities;
 using ComplaintApi.Models;
 using ComplaintApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -55,6 +56,41 @@ namespace ComplaintApi.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpPost]
+        public IActionResult createComplain( string companyId, string moduleId, string priorityId, string userId,
+            [FromBody] ComplaintsMasterForCreationDto complain)
+        {
+            if (complain == null)
+            {
+                return BadRequest();
+            }
+
+            if (!_complaintRepository.companyExists(companyId) || !_complaintRepository.companyExists(priorityId) || !_complaintRepository.companyExists(moduleId) ||!_complaintRepository.companyExists(userId))
+            {
+                return NotFound();
+            }
+
+            var complainEntity = Mapper.Map<ComplainsMaster>(complain);
+
+            complainEntity.CompanyID = companyId;
+            complainEntity.PriorityID = priorityId;
+            complainEntity.ModuleID = moduleId;
+            complainEntity.EmpID = userId;
+
+            _complaintRepository.addComplaint(complainEntity);
+
+            if (!_complaintRepository.save())
+            {
+                throw new Exception("Creation failed at save()");
+            }
+
+            var complainToReturn = Mapper.Map<ComplainsMaster>(complainEntity);
+
+            complainToReturn.ComplainID = complainEntity.ComplainID;
+
+            return CreatedAtRoute("getComplain", new { complainId = complainEntity.ComplainID }, complainToReturn);
         }
     }
 }

@@ -30,5 +30,7 @@ namespace ComplaintApi.Entities
 
         public byte[] Salt { get; set; }
 
+        public ICollection<ComplainsMaster> ComplainsMasters { get; set; }
+            = new List<ComplainsMaster>();
     }
 }
