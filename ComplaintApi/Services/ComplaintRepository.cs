@@ -116,10 +116,7 @@ namespace ComplaintApi.Services
 
         //methods for delete requests
 
-        public bool CompanyExists(object companyId)
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public void DeleteCompany(CompanyMaster companyMaster)
         {
@@ -131,30 +128,20 @@ namespace ComplaintApi.Services
             _context.ModuleMaster.Remove(moduleMaster);
         }
 
-        public bool ModuleExists(object moduleId)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public void DeletePriority(PriorityMaster priorityMaster)
         {
             _context.PriorityMaster.Remove(priorityMaster);
         }
 
-        public bool PriorityExists(object priorityId)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public void DeleteUser(UserMaster userMaster)
         {
             _context.UserMaster.Remove(userMaster);
         }
 
-        public bool UserExists(object empId)
-        {
-            throw new NotImplementedException();
-        }
 
         public void DeleteUserCompany(UserCompany userCompany)
         {
@@ -215,6 +202,6 @@ namespace ComplaintApi.Services
 
         }
 
-       
+      
     }
 }

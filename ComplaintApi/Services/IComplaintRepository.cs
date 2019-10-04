@@ -64,10 +64,7 @@ namespace ComplaintApi.Services
 
         bool Save();
         bool save();
-        bool CompanyExists(object companyId);
-		bool ModuleExists(object moduleId);
-		bool PriorityExists(object priorityId);
-		bool UserExists(object empId);
+      
 
         void addComplaint(ComplainsMaster  complainsMaster);
 

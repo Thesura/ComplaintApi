@@ -59,7 +59,7 @@ namespace ComplaintApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult createComplain( string companyId, string moduleId, string priorityId, string userId,
+        public IActionResult createComplain( string companyId, string moduleId, string priorityId, string empId,
             [FromBody] ComplaintsMasterForCreationDto complain)
         {
             if (complain == null)
@@ -67,7 +67,7 @@ namespace ComplaintApi.Controllers
                 return BadRequest();
             }
 
-            if (!_complaintRepository.companyExists(companyId) || !_complaintRepository.companyExists(priorityId) || !_complaintRepository.companyExists(moduleId) ||!_complaintRepository.companyExists(userId))
+            if (!_complaintRepository.companyExists(companyId) || !_complaintRepository.priorityExists(priorityId) || !_complaintRepository.moduleExists(moduleId) ||!_complaintRepository.userExists(empId))
             {
                 return NotFound();
             }
@@ -77,7 +77,7 @@ namespace ComplaintApi.Controllers
             complainEntity.CompanyID = companyId;
             complainEntity.PriorityID = priorityId;
             complainEntity.ModuleID = moduleId;
-            complainEntity.EmpID = userId;
+            complainEntity.EmpID = empId;
 
             _complaintRepository.addComplaint(complainEntity);
 
